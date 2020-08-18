@@ -2,6 +2,17 @@
 
 A playground for Future Super design patterns.
 
+## Viewing on iOS
+
+1. Prepare custom fonts (see below)
+2. Open [futuresuper.github.io/design/](https://futuresuper.github.io/design/)
+
+### Preparing fonts
+
+1. Get your licensed copies of Sharp Grotesk and JetBrains Mono
+2. Name these copies exactly how they are referenced in the CSS
+3. Upload these copies to your iOS device through an app such as [iFont](https://apps.apple.com/us/app/ifont-find-install-any-font/id1173222289)
+
 ## Running locally
 
 1. Clone this repository
