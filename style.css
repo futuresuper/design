@@ -1,25 +1,31 @@
 :root {
-  --white-000: #ffffff;
-  --off-white-100: #fdfcfc;
-  --off-white-300: #fbf9f9;
-  --off-white-500: #f5f0f0;
-  --grey-800: #1d1d1b;
-  --grey-700: #30302c;
-  --blue-500: #0a5aff;
-  --blue-700: #0043cc;
-  --green-500: #2bb151;
+  color-scheme: light dark;
 
   --font-weight-medium: 500;
   --font-stretch-narrow: 94%;
   --font-stretch-normal: 100%;
   --font-stretch-wide: 106%;
 
-  --border-radius-square: 1.05px;
+  --border-radius-square: 1px;
+}
+
+::selection {
+  background: var(--blue-500);
+  color: white;
 }
 
 @font-face {
   font-family: "SharpGroteskVF";
   src: url("SharpGroteskTrial-VF.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "JetBrainsMonoVF";
+  src: url("JetBrainsMono-Variable.ttf") format("truetype");
+}
+
+* {
+  transition: background-color 0.2s cubic-bezier(0.3, 0, 0.5, 1);
 }
 
 body,
@@ -28,75 +34,143 @@ input {
 }
 
 body {
-  background: var(--white-000);
-  color: var(--grey-800);
+  color: var(--color);
+  background-color: var(--background-color);
+
   font-stretch: var(--font-stretch-normal);
-  margin: 2rem 1rem;
+  margin: 0;
+}
+
+header,
+section {
+  margin: 0 1rem;
 }
 
 header {
-  margin-bottom: 2rem;
+  margin-bottom: 4rem;
 }
 
 h1 {
-  font-weight: var(--font-weight-medium);
-  font-stretch: var(--font-stretch-wide);
+  font-weight: 550;
+  letter-spacing: -1px;
+  font-stretch: var(--font-stretch-narrow);
+  /* color: var(--black-500); */
+  font-size: 56px;
+  margin: 0;
+  /* text-transform: uppercase; */
+  line-height: 110%;
 }
 
+header h2 {
+  font-family: "JetBrainsMonoVF";
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: -0.1px;
+  margin: 0;
+  margin-bottom: 0.75rem;
+}
+
+/* h1 span.highlight {
+  color: var(--blue-500);
+} */
+
 p {
-  font-size: 15px;
+  /* font-size: 15px; */
+  max-width: 600px;
   line-height: 160%;
-  color: var(--grey-700);
+  /* color: var(--grey-700); */
   font-stretch: var(--font-stretch-narrow);
   font-weight: normal;
+  letter-spacing: -0.2px;
 }
 
 input,
 label {
+  font-family: "JetBrainsMonoVF";
+  letter-spacing: -0.1px;
   width: 100%;
   box-sizing: border-box;
 }
 
 label {
   font-size: 15px;
+  font-weight: 550;
   display: block;
-  font-weight: var(--font-weight-medium);
+  /* font-weight: var(--font-weight-medium); */
+  /* font-weight: 464; */
   margin-bottom: 0.5rem;
-}
-
-label span {
-  color: grey;
 }
 
 input {
   font-size: 14px;
-  background-color: var(--off-white-100);
-  border: 1px solid black;
+
   border-radius: var(--border-radius-square);
   padding: 0.75rem;
-  box-shadow: inset 0px 4px 0.5px rgba(0, 0, 0, 0.04);
+
   margin-bottom: 2.5rem;
 }
 
-input:hover,
-input:active {
+/* input:hover {
   background-color: var(--off-white-300);
+} */
+
+input:active,
+input:focus {
+  color: var(--black-500);
+  background-color: var(--white-000);
+  /* box-shadow: inset 0px 0px 0px rgba(0, 0, 0, 0); */
+  outline: none;
+  box-shadow: 0 0 0 4px var(--blue-300);
+  border: 1px solid var(--blue-500);
 }
 
 a.button {
+  font-family: "JetBrainsMonoVF";
+  font-weight: 550;
+  text-align: center;
   margin-top: 0.5rem;
   display: inline-block;
-  padding: 1rem 2.5rem;
-  background-color: var(--blue-500);
   border-radius: var(--border-radius-square);
-  color: white;
   text-decoration: none;
-
-  font-stretch: var(--font-stretch-narrow);
-  font-weight: 500;
-  text-align: center;
 }
 
-a.button:hover {
-  background-color: var(--green-500);
+a.button:visited {
+  color: inherit;
+}
+
+a.button.primary {
+  color: white;
+  background-color: var(--blue-500);
+  padding: 1rem 2rem;
+}
+a.button.primary:hover {
+  background-color: #003cb8;
+}
+
+a.button.primary:active {
+  background-color: var(--black-500);
+}
+
+a.button.back {
+  font-size: 12px;
+  padding: 0.55rem 1rem;
+  margin-top: 3rem;
+  margin-bottom: 2.5rem;
+  /* border-radius: 200px; */
+}
+
+footer {
+  margin-top: 5rem;
+  height: 50vh;
+  font-size: 12px;
+  padding: 2rem 0;
+  font-stretch: var(--font-stretch-narrow);
+}
+
+footer a {
+  color: inherit;
+}
+
+p strong {
+  font-weight: 500;
 }

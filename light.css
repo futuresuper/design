@@ -1,0 +1,35 @@
+/* Dark content on light background */
+/* https://web.dev/prefers-color-scheme/ */
+:root {
+  color: var(--grey-800);
+  background-color: var(--white-500);
+}
+
+a.button.back {
+  color: var(--grey-900);
+  border: 1px solid var(--grey-700);
+}
+
+a.button.back:hover {
+  color: white;
+  background-color: var(--black-500);
+  border: 1px solid var(--black-500);
+}
+
+header h2 {
+  color: #aaa;
+}
+
+label span {
+  color: var(--grey-400);
+}
+
+input {
+  background-color: var(--off-white-300);
+  border: 1px solid var(--black-500);
+  box-shadow: inset 0px 4px 0.5px rgba(0, 0, 0, 0.04);
+}
+
+footer {
+  background-color: var(--off-white-500);
+}
