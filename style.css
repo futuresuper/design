@@ -92,10 +92,11 @@ label {
   letter-spacing: -0.1px;
   width: 100%;
   box-sizing: border-box;
+  font-size: inherit;
 }
 
 label {
-  font-size: 15px;
+  /* font-size: 15px; */
   font-weight: 550;
   display: block;
   /* font-weight: var(--font-weight-medium); */
@@ -104,8 +105,7 @@ label {
 }
 
 input {
-  font-size: 14px;
-
+  /* font-size: 14px; */
   border-radius: var(--border-radius-square);
   padding: 0.75rem;
 
