@@ -1,0 +1,102 @@
+:root {
+  --white-000: #ffffff;
+  --off-white-100: #fdfcfc;
+  --off-white-300: #fbf9f9;
+  --off-white-500: #f5f0f0;
+  --grey-800: #1d1d1b;
+  --grey-700: #30302c;
+  --blue-500: #0a5aff;
+  --blue-700: #0043cc;
+  --green-500: #2bb151;
+
+  --font-weight-medium: 500;
+  --font-stretch-narrow: 94%;
+  --font-stretch-normal: 100%;
+  --font-stretch-wide: 106%;
+
+  --border-radius-square: 1.05px;
+}
+
+@font-face {
+  font-family: "SharpGroteskVF";
+  src: url("SharpGroteskTrial-VF.ttf") format("truetype");
+}
+
+body,
+input {
+  font-family: "SharpGroteskVF", sans-serif;
+}
+
+body {
+  background: var(--white-000);
+  color: var(--grey-800);
+  font-stretch: var(--font-stretch-normal);
+  margin: 2rem 1rem;
+}
+
+header {
+  margin-bottom: 2rem;
+}
+
+h1 {
+  font-weight: var(--font-weight-medium);
+  font-stretch: var(--font-stretch-wide);
+}
+
+p {
+  font-size: 15px;
+  line-height: 160%;
+  color: var(--grey-700);
+  font-stretch: var(--font-stretch-narrow);
+  font-weight: normal;
+}
+
+input,
+label {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+label {
+  font-size: 15px;
+  display: block;
+  font-weight: var(--font-weight-medium);
+  margin-bottom: 0.5rem;
+}
+
+label span {
+  color: grey;
+}
+
+input {
+  font-size: 14px;
+  background-color: var(--off-white-100);
+  border: 1px solid black;
+  border-radius: var(--border-radius-square);
+  padding: 0.75rem;
+  box-shadow: inset 0px 4px 0.5px rgba(0, 0, 0, 0.04);
+  margin-bottom: 2.5rem;
+}
+
+input:hover,
+input:active {
+  background-color: var(--off-white-300);
+}
+
+a.button {
+  margin-top: 0.5rem;
+  display: inline-block;
+  padding: 1rem 2.5rem;
+  background-color: var(--blue-500);
+  border-radius: var(--border-radius-square);
+  color: white;
+  text-decoration: none;
+
+  font-stretch: var(--font-stretch-narrow);
+  font-weight: 500;
+  text-align: center;
+}
+
+a.button:hover {
+  background-color: var(--green-500);
+}
