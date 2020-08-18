@@ -5,6 +5,8 @@
   --font-stretch-narrow: 94%;
   --font-stretch-normal: 100%;
   --font-stretch-wide: 106%;
+  --font-stack-sans-serif: "SharpGroteskVF", "Sharp Grotesk Medium 19", sans-serif;
+  --font-stack-monospace: "JetBrainsMonoVF", "JetBrains Mono", monospace;
 
   --border-radius-square: 1px;
 }
@@ -28,16 +30,16 @@
   transition: background-color 0.2s cubic-bezier(0.3, 0, 0.5, 1);
 }
 
-body,
+/* body,
 input {
   font-family: "SharpGroteskVF", sans-serif;
-}
+} */
 
 body {
   color: var(--color);
   background-color: var(--background-color);
-
-  font-stretch: var(--font-stretch-normal);
+  font-family: var(--font-stack-sans-serif);
+  /* font-stretch: var(--font-stretch-normal); */
   margin: 0;
 }
 
@@ -62,7 +64,7 @@ h1 {
 }
 
 header h2 {
-  font-family: "JetBrainsMonoVF";
+  font-family: var(--font-stack-monospace);
   font-size: 14px;
   font-weight: 500;
   letter-spacing: -0.1px;
@@ -86,7 +88,7 @@ p {
 
 input,
 label {
-  font-family: "JetBrainsMonoVF";
+  font-family: var(--font-stack-monospace);
   letter-spacing: -0.1px;
   width: 100%;
   box-sizing: border-box;
@@ -125,7 +127,7 @@ input:focus {
 }
 
 a.button {
-  font-family: "JetBrainsMonoVF";
+  font-family: var(--font-stack-monospace);
   font-weight: 550;
   text-align: center;
   margin-top: 0.5rem;
