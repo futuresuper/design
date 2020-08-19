@@ -20,6 +20,14 @@ header h2 {
   color: #aaa;
 }
 
+p span.tooltip {
+  border-color: var(--blue-300);
+}
+p span.tooltip:hover {
+  border-color: var(--blue-500);
+  background-color: var(--blue-300);
+}
+
 label span {
   color: var(--grey-400);
 }

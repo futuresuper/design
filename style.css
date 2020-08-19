@@ -18,7 +18,7 @@
 
 @font-face {
   font-family: "SharpGroteskVF";
-  src: url("SharpGroteskTrial-VF.ttf") format("truetype");
+  src: url("SharpGroteskTrial-VF.ttf") format("truetype"), url("http://content.myfuturesuper.com.au/dev/fonts/grotesk-vf.ttf") format("truetype");
 }
 
 @font-face {
@@ -27,7 +27,7 @@
 }
 
 * {
-  transition: background-color 0.2s cubic-bezier(0.3, 0, 0.5, 1);
+  transition: background-color 0.12s cubic-bezier(0.3, 0, 0.5, 1);
 }
 
 /* body,
@@ -84,6 +84,15 @@ p {
   font-stretch: var(--font-stretch-narrow);
   font-weight: normal;
   letter-spacing: -0.2px;
+}
+
+p span.tooltip {
+  border-bottom-width: 2px;
+  border-bottom-style: dotted;
+  /* text-decoration-style: wavy; */
+}
+p span.tooltip:hover {
+  cursor: pointer;
 }
 
 input,
