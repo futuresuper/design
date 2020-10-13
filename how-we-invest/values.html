@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How We Invest | Future Super</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            margin: 0;
+            /* display: flex; */
+        }
+
+        section {
+            box-sizing: border-box;
+            padding: 10rem;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            color: white;
+        }
+
+        section:first-of-type {
+            background-color: red;
+        }
+
+        section:last-of-type {
+            background-color: green;
+        }
+
+
+        section h2,
+        section ul li {
+            margin: 0;
+            font-size: 3rem;
+            font-weight: 500;
+            line-height: 6rem;
+        }
+
+        section h2 {
+            width: 33%;
+        }
+
+        section ul {
+            list-style-type: none;
+            padding-left: 0;
+            margin: 0;
+        }
+
+        section h2,
+        section .carousel {
+            height: 6rem;
+        }
+
+
+        .carousel {
+            /* overflow: hidden; */
+            /* display: inline-block; */
+            /* vertical-align: top; */
+            margin: 0;
+        }
+
+        .inner {
+            animation: scrollFiveItems 10s ease-in-out infinite;
+        }
+
+        .inner:hover {
+            animation-play-state: paused;
+        }
+
+
+        @keyframes scrollFiveItems {
+
+            0%,
+            20% {
+                transform: translateY(0);
+            }
+
+            25%,
+            45% {
+                transform: translateY(-6rem);
+            }
+
+            50%,
+            70% {
+                transform: translateY(-12rem);
+            }
+
+            75%,
+            95% {
+                transform: translateY(-18rem);
+            }
+
+            100% {
+                transform: translateY(-24rem);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- <section>
+        <h2>We exclude</h2>
+        <div class="">
+            <ul class="">
+                <li>Fossil fuels</li>
+                <li>Destruction of valuable environments</li>
+                <li>Gambling</li>
+                <li>Human and labour rights concerns</li>
+                <li>Detention centres and for-profit prisons</li>
+                <li>Board gender diversity</li>
+                <li>Armaments</li>
+                <li>Animal cruelty</li>
+                <li>Uranium mining and nuclear energy</li>
+                <li>Tobacco</li>
+                <li>Detention centres and for-profit prisons</li>
+                <li>Alcohol</li>
+                <li>Pornography</li>
+                <li>Junk Food</li>
+                <li>Chemicals of concern</li>
+            </ul>
+        </div>
+    </section> -->
+    <section>
+        <h2>We preference</h2>
+        <div class="carousel">
+            <ul class="inner">
+                <li>Clean energy</li>
+                <li>Renewables technology</li>
+                <li>Sustainable agriculture</li>
+                <li>Social impact</li>
+                <!-- <li>Healthcare</li> -->
+                <li>Clean energy</li>
+            </ul>
+        </div>
+    </section>
+
+</body>
+
+</html>
