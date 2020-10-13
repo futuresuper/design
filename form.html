@@ -17,7 +17,6 @@
         }
     </script>
     <link rel="stylesheet" href="styles/colours.css">
-    <!-- https://web.dev/prefers-color-scheme/ -->
     <!--
         Conditionally either load the light or the dark stylesheet. The matching file
         will be downloaded with `highest`, the non-matching file with `lowest`
@@ -25,30 +24,45 @@
         query is unknown and the files are downloaded with `lowest` priority (but
         above I already force `highest` priority for my default light experience).
       -->
-    <link rel="stylesheet" href="styles/dark.css" media="(prefers-color-scheme: dark)">
-    <link rel="stylesheet" href="styles/light.css" media="(prefers-color-scheme: light)">
+    <link rel="stylesheet" href="styles/form/dark.css" media="(prefers-color-scheme: dark)">
+    <link rel="stylesheet" href="styles/form/light.css" media="(prefers-color-scheme: light)">
     <!-- The main stylesheet -->
     <link rel="stylesheet" href="styles/style.css">
     <!-- Page-specific styles -->
-    <!-- <link rel="stylesheet" href="styles/form/form.css"> -->
+    <link rel="stylesheet" href="styles/form/form.css">
 </head>
 
 <body>
     <header>
-        <h2>Future Super</h2>
-        <a href="#">Menu</a>
-    </header>
-    <header>
-        <h1>Hi, Shyam</h1>
-        <dl>
-            <dt>Member number</dt>
-            <dd>1234567890</dd>
-        </dl>
-        <p>Some content here</p>
+        <a href="index.html" class="button back">← Back</a>
+        <h2>Join Future Super</h2>
+        <h1>Enter your tax file number</span></h1>
+        <p>Select an investment option for your super. You can change your investment option at any time, <span
+                class="tooltip">up to
+                four
+                times a year for free</span>.</p>
     </header>
     <section>
-        <a href="form.html" class="button primary">Join Future Super</a>
+        <label for="name">First name</label>
+        <input type="text" id="name" name="name" required placeholder="The one on your ID">
+
+        <label for="middle-name">Middle names <span>(optional)</span></label>
+        <input type="text" id="middle-name" name="middle-name">
+
+        <label for="address">Residential address</label>
+        <input type="text" id="address" name="address" required placeholder="Start typing your residential address...">
+
+        <a href="#" class="button primary">Continue →</a>
     </section>
+
+    <footer>
+        <section>
+            <p><strong>Need some help?</strong> <a href="#">Contact us</a>.</p>
+        </section>
+        <section>
+            Legalese here.
+        </section>
+    </footer>
 </body>
 
 </html>

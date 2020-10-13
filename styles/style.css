@@ -4,7 +4,7 @@
   --font-weight-medium: 500;
   --font-stretch-narrow: 94%;
   --font-stretch-normal: 100%;
-  --font-stretch-wide: 106%;
+  --font-stretch-wide: 112%;
   --font-stack-sans-serif: "SharpGroteskVF", "Sharp Grotesk Medium 19", sans-serif;
   --font-stack-monospace: "JetBrainsMonoVF", "JetBrains Mono", monospace;
 
@@ -18,12 +18,12 @@
 
 @font-face {
   font-family: "SharpGroteskVF";
-  src: url("SharpGroteskTrial-VF.ttf") format("truetype"), url("https://content.myfuturesuper.com.au/dev/fonts/grotesk-vf.ttf") format("truetype");
+  src: url("fonts/SharpGroteskTrial-VF.ttf") format("truetype"), url("https://content.myfuturesuper.com.au/dev/fonts/grotesk-vf.ttf") format("truetype");
 }
 
 @font-face {
   font-family: "JetBrainsMonoVF";
-  src: url("JetBrainsMono-Variable.ttf") format("truetype");
+  src: url("fonts/JetBrainsMono-Variable.ttf") format("truetype");
 }
 
 * {
@@ -49,18 +49,20 @@ section {
 }
 
 header {
+  margin-top: 3rem;
   margin-bottom: 4rem;
 }
 
 h1 {
   font-weight: 550;
   letter-spacing: -1px;
-  font-stretch: var(--font-stretch-narrow);
-  /* color: var(--black-500); */
-  font-size: 56px;
+  /* font-stretch: var(--font-stretch-narrow); */
+  font-stretch: var(--font-stretch-wide);
+  /* font-size: 56px; */
+  /* font-size: 36px; */
+  font-size: 44px;
   margin: 0;
-  /* text-transform: uppercase; */
-  line-height: 110%;
+  line-height: 112%;
 }
 
 header h2 {
@@ -127,7 +129,7 @@ input {
 input:active,
 input:focus {
   color: var(--black-500);
-  background-color: var(--white-000);
+  background-color: var(--white-500);
   /* box-shadow: inset 0px 0px 0px rgba(0, 0, 0, 0); */
   outline: none;
   box-shadow: 0 0 0 4px var(--blue-300);
@@ -164,7 +166,6 @@ a.button.primary:active {
 a.button.back {
   font-size: 12px;
   padding: 0.55rem 1rem;
-  margin-top: 3rem;
   margin-bottom: 2.5rem;
   /* border-radius: 200px; */
 }
@@ -183,4 +184,11 @@ footer a {
 
 p strong {
   font-weight: 500;
+}
+
+/*  */
+
+dd {
+  margin: 0;
+  font-family: var(--font-stack-monospace);
 }

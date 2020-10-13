@@ -1,5 +1,5 @@
 :root {
-  --white-000: #ffffff;
+  --white-500: #ffffff;
   --off-white-100: #fdfcfc;
   --off-white-300: #fbf9f9;
   --off-white-500: #f5f0f0;
@@ -13,4 +13,6 @@
   --blue-500: #0a5aff;
   --blue-700: #0043cc;
   --green-500: #2bb151;
+  --green-700: #21873e;
+  --red-900: #47170b;
 }

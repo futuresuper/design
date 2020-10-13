@@ -1,19 +1,19 @@
 /* Light content on dark background */
 /* https://web.dev/prefers-color-scheme/ */
 :root {
-  color: var(--white-000);
+  color: var(--white-500);
   background-color: var(--grey-800);
 }
 
 a.button.back {
-  color: var(--white-000);
+  color: var(--white-500);
   border: 1px solid var(--grey-500);
 }
 
 a.button.back:hover {
   color: var(--black-500);
-  background-color: var(--white-000);
-  border: 1px solid var(--white-000);
+  background-color: var(--white-500);
+  border: 1px solid var(--white-500);
 }
 
 header h2 {

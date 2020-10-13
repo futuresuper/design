@@ -1,0 +1,14 @@
+@keyframes moveIn {
+  0% {
+    transform: translateY(2%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+body {
+  animation: 0.24s cubic-bezier(0.3, 0, 0.5, 1) 1 moveIn;
+}

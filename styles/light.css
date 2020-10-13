@@ -1,0 +1,10 @@
+/* Dark content on light background */
+/* https://web.dev/prefers-color-scheme/ */
+:root {
+  color: var(--grey-800);
+  background-color: var(--off-white-500);
+}
+
+body {
+  /* background: red; */
+}
