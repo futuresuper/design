@@ -53,7 +53,7 @@
         h1 span {
             animation: pulse 1s cubic-bezier(0.55, 0.085, 0.68, 0.53) alternate infinite;
             /* Start paused until JavaScript is ready */
-            animation-play-state: paused;
+            /* animation-play-state: paused; */
         }
 
         @keyframes pulse {
@@ -165,16 +165,17 @@
 
         // Prepare text content for H1 element
         // With flashing first '0' if one exists
-        const errorNumber = getErrorNumber().replace("0", "<span>0</span>");
+        // const errorNumber = getErrorNumber().replace("0", "<span>0</span>");
         
         // Set H1 element text content 
-        h1.innerHTML = errorNumber;
+        // h1.innerHTML = errorNumber;
+        h1.textContent = getErrorNumber();
 
         // Get span element around the flashing '0'
-        const h1Span = document.querySelectorAll("h1 span")[0];
+        // const h1Span = document.querySelectorAll("h1 span")[0];
 
         // Let flashing animation play
-        h1Span.style.animationPlayState = "running";
+        // h1Span.style.animationPlayState = "running";
 
         // Function for just getting error number
         function getErrorNumber() {
