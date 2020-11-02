@@ -12,6 +12,8 @@
             --white-500: #ffffff;
             --black-500: #140f14;
             --blue-500: #0a5aff;
+
+            --margin-page-x: 2rem;
         }
 
         body {
@@ -23,24 +25,35 @@
 
         ul {
             list-style: none;
-            padding: 0;
+            margin: 0;
+            padding: 4rem 0;
         }
 
         ul#reviews {
             display: flex;
-            /* overflow-x: auto; */
+            overflow-x: auto;
             scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
         }
 
         ul#reviews li {
-            margin-left: 2rem;
-            width: calc(86vw - 2rem);
+            scroll-snap-align: start;
             /* Stop items from shrinking */
             flex-shrink: 0;
+            padding-left: 2rem;
+            width: calc(100% - 6rem);
+            margin-left: -6rem;
+            margin-right: 6rem;
+        }
+
+        h2,
+        ul#reviews li:first-of-type {
+            margin-left: var(--margin-page-x);
         }
 
         /* Style the reviewTitle */
-        ul#reviews li > p:first-of-type {
+        ul#reviews li>p:first-of-type {
             font-size: 7vw;
         }
 
@@ -48,14 +61,33 @@
             display: flex;
         }
 
+        /* Add fluff to add context */
+        section.dummy:first-of-type {
+            height: 60vh;
+            background-color: red;
+        }
+
+        section.dummy:last-of-type {
+            height: 50vh;
+            background-color: blue;
+        }
     </style>
 </head>
 
 <body>
-    <ul id="reviews">
+    <section class="dummy"></section>
+    <section>
+        <h2>Don't just take it from us...</h2>
+        <ul id="reviews">
 
-    </ul>
+        </ul>
+    </section>
+    <section class="dummy"></section>
     <script>
+        // Prepare function for shortening long review titles to less than 100 characters
+        const truncate = (input) => input.length > 100 ? `${input.substring(0, 100)}...` : input;
+
+        // Import reviews
         const selectedReviews = [
             {
                 "starCount": 5,
@@ -88,29 +120,41 @@
         ]
 
         const reviewsList = document.getElementById("reviews")
-        selectedReviews.map(i => {
+        selectedReviews.map((review, index) => {
             const reviewContainer = document.createElement("li");
+            reviewContainer.setAttribute("id", `review-${index + 1}`)
             // Add stars
             const starContainer = document.createElement("div");
             starContainer.setAttribute("class", "star-container");
 
-            for (let s = 0; s < i.starCount; s++) {
+            for (let s = 0; s < review.starCount; s++) {
                 const star = document.createElement("p")
                 star.textContent = "★"
                 starContainer.appendChild(star)
             }
             // Add text
-            const reviewText = document.createElement("p");
+            const reviewTitle = document.createElement("p");
             const reviewMeta = document.createElement("p");
-            reviewText.textContent = i.title;
-            reviewMeta.innerHTML = `${i.author}, <a href=${i.link}>${i.timestamp}</a>`;
+            reviewTitle.textContent = truncate(review.title);
+            reviewMeta.innerHTML = `${review.author}, <a href=${review.link}>${review.timestamp}</a>`;
 
             // Add everything
             reviewContainer.appendChild(starContainer)
-            reviewContainer.appendChild(reviewText)
+            reviewContainer.appendChild(reviewTitle)
             reviewContainer.appendChild(reviewMeta)
             reviewsList.appendChild(reviewContainer)
         })
+
+        // Jump to next review every four seconds
+        // setTimeout(function () {
+        //     window.scrollTo(0, y-coord)
+        //     document.getElementById('review-2').scrollIntoView();
+        //     console.log("working...")
+        // }, 4000);
+
+        // element.scrollLeft = 10;
+        // console.log(selectedReviews.length)
+
 
     </script>
 </body>
