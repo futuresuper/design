@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Future Super</title>
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet"> -->
+
+    <style>
+        :root {
+            --white-500: #ffffff;
+            --black-500: #140f14;
+            --blue-500: #0a5aff;
+        }
+
+        body {
+            margin: 0;
+            font-family: Helvetica, Arial, sans-serif;
+            background-color: var(--white-500);
+            color: var(--black-500);
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        ul#reviews {
+            display: flex;
+            /* overflow-x: auto; */
+        }
+
+        ul#reviews li {
+            margin-left: 2rem;
+            width: calc(86vw - 2rem);
+            /* Stop items from shrinking */
+            flex-shrink: 0;
+        }
+
+        /* Style the reviewTitle */
+        ul#reviews li > p:first-of-type {
+            font-size: 7vw;
+        }
+
+        .star-container {
+            display: flex;
+        }
+
+    </style>
+</head>
+
+<body>
+    <ul id="reviews">
+
+    </ul>
+    <script>
+        const selectedReviews = [
+            {
+                "starCount": 5,
+                "title": "Super easy way to help your future",
+                "author": "Jef Tan",
+                "timestamp": "3 days ago",
+                "link": "https://www.productreview.com.au/reviews/50ee2a74-b965-47d7-8be5-3d021e67a87a"
+            },
+            {
+                "starCount": 5,
+                "title": "Wonderful way to put my super into enviro friendly companies and out of the coal corps",
+                "author": "beinghealthiernow",
+                "timestamp": "5 days ago",
+                "link": "https://www.productreview.com.au/reviews/1b1ddcc1-8901-455b-9170-67a61351bb21"
+            },
+            {
+                "starCount": 4,
+                "title": "Very satisfied",
+                "author": "Jeff",
+                "timestamp": "2 weeks ago",
+                "link": "https://www.productreview.com.au/reviews/cd108830-af6f-465c-b9c4-2b83bfb86453"
+            },
+            {
+                "starCount": 5,
+                "title": "You've found it - no where else to go!",
+                "author": "Annette",
+                "timestamp": "4 days ago",
+                "link": "https://www.productreview.com.au/reviews/b3c89bbc-284e-4f03-af25-585b5e6d5589"
+            }
+        ]
+
+        const reviewsList = document.getElementById("reviews")
+        selectedReviews.map(i => {
+            const reviewContainer = document.createElement("li");
+            // Add stars
+            const starContainer = document.createElement("div");
+            starContainer.setAttribute("class", "star-container");
+
+            for (let s = 0; s < i.starCount; s++) {
+                const star = document.createElement("p")
+                star.textContent = "★"
+                starContainer.appendChild(star)
+            }
+            // Add text
+            const reviewText = document.createElement("p");
+            const reviewMeta = document.createElement("p");
+            reviewText.textContent = i.title;
+            reviewMeta.innerHTML = `${i.author}, <a href=${i.link}>${i.timestamp}</a>`;
+
+            // Add everything
+            reviewContainer.appendChild(starContainer)
+            reviewContainer.appendChild(reviewText)
+            reviewContainer.appendChild(reviewMeta)
+            reviewsList.appendChild(reviewContainer)
+        })
+
+    </script>
+</body>
+
+</html>
