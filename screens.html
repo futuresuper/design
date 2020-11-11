@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How We Invest</title>
+    <style>
+        :root {
+            /* Colours */
+            --white-500: #ffffff;
+            --black-500: #140f14;
+            --red-500: #F04B23;
+            --red-700: #DB380F;
+            --red-900: #3C1631;
+
+            /* Spacing */
+            --margin-page-x: 2.5rem;
+            --padding-section-y: 3rem;
+        }
+
+        @font-face {
+        font-family: "JetBrains Mono";
+        src: url("https://raw.githubusercontent.com/JetBrains/JetBrainsMono/master/fonts/webfonts/JetBrainsMono-Regular.woff2")
+            format("woff2");
+        font-weight: normal;
+        font-style: normal;
+        }
+
+        @font-face {
+            font-family: "SharpGroteskVF";
+            src: url("styles/fonts/SharpGroteskVariableTrial-subset-latin.woff2") format("woff2");
+            font-stretch: 92%;
+            /* font-weight: 500; */
+            letter-spacing: -0.014em;
+            line-height: 1.2;
+        }
+
+
+        body {
+            margin: 0;
+            font-family: "SharpGroteskVF", Helvetica, Arial, sans-serif;
+            background-color: var(--white-500);
+            color: var(--black-500);
+            /* box-sizing: border-box; */
+        }
+
+        section {
+            max-width: 960px;
+            margin: 0 auto;
+        }
+
+        section header {
+            text-align: center;
+            margin: 0 auto;
+            margin-bottom: 4rem;
+        }
+
+        section header h2 {
+            font-size: 7rem;
+            font-weight: 500;
+            margin-bottom: 0;
+        }
+
+        section header p {
+            font-size: 1.5rem;
+            line-height: 160%;
+            max-width: 420px;
+            margin: 0 auto;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Style the screen container section */
+        .screens {
+            max-width: 600px;
+            margin: 0 auto;
+            border: 1px solid var(--red-500);
+            padding: 3rem;
+        }
+
+        .detail {
+            font-size: 0.875rem;
+        }
+
+        .screen-selector {
+            display: flex;
+        }
+
+        /* Style the speech bubbles */
+        .question {
+            font-family: "JetBrains Mono";
+            background: var(--red-700);
+            color: var(--white-500);
+            padding: 1.5rem;
+        }
+
+        #screen-container {
+            opacity: 0;
+            transition: opacity 250ms ease-in-out;
+        }
+
+        #screen-container.is-visible {
+            opacity: 1;
+        }
+    </style>
+</head>
+
+<body>
+    <section>
+        <header>        
+    <h2>#1</h2>
+    <p>We apply industry-leading ethical screens to all our super portfolios.</p>
+    <p>Investments must pass every screen to qualify.</p>
+</header>
+    <div class="screens">
+        <div class="screen-selector">
+        <select id="first-choice">
+            <option value="exclude">We exclude</option>
+            <option value="seek">We seek</option>
+        </select>
+
+
+        <select id="second-choice">
+        </select>
+    </div>
+
+        <p class="detail">Through this criteria...</p>
+
+        <!-- Screen-specific info -->
+        <div id="screen-container"></div>
+    </div>
+    </section>
+
+    <script>
+        // What helped me:
+        // https://css-tricks.com/dynamic-dropdowns/
+        // https://stackoverflow.com/a/38444218
+
+        const firstChoice = document.getElementById("first-choice");
+        const secondChoice = document.getElementById("second-choice");
+
+        const screenContainer = document.getElementById("screen-container");
+
+        const data = {
+            "exclude": "Fossil fuels,Gambling,Tobacco",
+            "seek": "Clean energy,Social impact,Healthcare",
+            "detail": [
+                {
+                    "name": "Fossil fuels",
+                    "type": "exclude",
+                    "criteria": [
+                        {
+                            "question": "Is the company involved at all in the exploration or extraction of fossil fuels?",
+                            "examples": ["BHP Billiton", "Woodside Petroleum (fracking)"]
+                        },
+                        {
+                            "question": "Does the company own or operate fossil fuel power generators, or retail fossil fuel-generated electricity?",
+                            "examples": ["Origin Energy", "AGL (burning)"]
+                        }
+                    ]
+                },
+                {
+                    "name": "Gambling",
+                    "type": "exclude",
+                    "criteria": [
+                        {
+                            "question": "Does the company profit from addiction to gambling?",
+                            "examples": ["Woolworths", "Aristocrat Leisure (ownership of poker machines and casinos)"]
+                        },
+                        {
+                            "question": "Does the company provide significant services to the gambling industry?",
+                            "examples": ["Fidelity National Information Services (payment services)"]
+                        }
+                    ]
+                },
+                {
+                    "name": "Tobacco",
+                    "type": "exclude",
+                    "criteria": [
+                        {
+                            "question": "Does the company produce or manufacture tobacco or tobacco products?",
+                            "examples": ["Marlborough"]
+                        },
+                        {
+                            "question": "Does the company provide significant services to the tobacco industry?",
+                            "examples": ["Amcor (packaging)"]
+                        }
+                    ]
+                }
+            ]
+        }
+
+        // Run this to start
+        updateFirstAndSecondChoice()
+
+        // Listen to changes to first select element
+        firstChoice.addEventListener('change', function () {
+            updateFirstAndSecondChoice()
+        });
+
+        // Listen to changes to second select element
+        secondChoice.addEventListener('change', function () {
+            updateSecondChoice()
+        });
+
+        // Core function for updating both first and second choices
+        function updateFirstAndSecondChoice() {
+            const key = firstChoice.options[firstChoice.selectedIndex].value
+            let vals = []
+
+            switch (key) {
+                case 'exclude':
+                    vals = data.exclude.split(",")
+                    break;
+                case 'seek':
+                    vals = data.seek.split(",")
+                    break;
+                // Default to exclude
+                default:
+                    vals = data.exclude.split(",")
+            }
+
+            // Remove old secondChoice options
+            while (secondChoice.firstChild) {
+                secondChoice.removeChild(secondChoice.firstChild);
+            }
+
+            // Add new secondChoice options
+            vals.map(value => {
+                let optionElement = document.createElement("option")
+                optionElement.textContent = value
+                optionElement.setAttribute('data-screen', value)
+                secondChoice.appendChild(optionElement);
+            })
+
+
+            // Update secondChoice select
+            updateSecondChoice()
+
+
+        }
+
+
+        // Core function for updating just the second choice
+        function updateSecondChoice() {
+            const key = secondChoice.options[secondChoice.selectedIndex].value
+
+            // Remove old screenContainer content
+            screenContainer.classList.remove("is-visible");
+
+            setTimeout(function () {
+                while (screenContainer.firstChild) {
+                    screenContainer.removeChild(screenContainer.firstChild);
+                }
+
+                // Add new screenContainer content
+                updateScreenContent(key)
+            }, 250)
+
+            setTimeout(function () {
+                screenContainer.classList.add("is-visible");
+            }, 500)
+
+        }
+
+        // Core function for updating the screening content below the selects
+        function updateScreenContent(screen) {
+            //   Go through data object
+            Array.from(data.detail).forEach((el) => {
+                //     Find the matching nested object
+                if (el.name == screen) {
+                    //       Put this information on screen
+                    const criteria = el.criteria
+                    criteria.map(i => {
+                        const screenSection = document.createElement("div")
+
+                        const question = document.createElement("p")
+                        question.textContent = i.question
+                        question.classList.add("question")
+
+                        const examplesContainer = document.createElement("ul")
+                        const examples = i.examples
+                        examples.map(i => {
+                            const exampleItem = document.createElement("li")
+                            exampleItem.textContent = i
+                            exampleItem.classList.add("example")
+                            examplesContainer.appendChild(exampleItem)
+                        })
+
+                        screenSection.appendChild(question)
+                        screenSection.appendChild(examplesContainer)
+                        screenContainer.appendChild(screenSection)
+                    })
+                }
+            })
+            // screenContainer.classList.add("is-visible");
+            // console.log(screenContainer.classList)
+        }
+    </script>
+</body>
+
+</html>
