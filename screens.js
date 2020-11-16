@@ -166,7 +166,7 @@ export default {
             ],
         },
         {
-            name: "Chemicals of concern",
+            name: "Concerning chemicals",
             criteria: [
                 {
                     question: "Does the company produce agricultural chemicals that negatively impact natural ecosystems or human and animal health?",
