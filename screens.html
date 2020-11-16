@@ -2,17 +2,19 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>How We Invest</title>
     <style>
         :root {
             /* Colours */
             --white-500: #ffffff;
             --black-500: #140f14;
-            --red-500: #F04B23;
-            --red-700: #DB380F;
-            --red-900: #3C1631;
+            --red-100: #FDEFEC;
+            --red-200: #FACCC2;
+            --red-500: #f04b23;
+            --red-700: #db380f;
+            --red-900: #3c1631;
 
             /* Spacing */
             --margin-page-x: 2.5rem;
@@ -20,29 +22,26 @@
         }
 
         @font-face {
-        font-family: "JetBrains Mono";
-        src: url("https://raw.githubusercontent.com/JetBrains/JetBrainsMono/master/fonts/webfonts/JetBrainsMono-Regular.woff2")
-            format("woff2");
-        font-weight: normal;
-        font-style: normal;
+            font-family: "JetBrains Mono";
+            src: url("https://raw.githubusercontent.com/JetBrains/JetBrainsMono/master/fonts/webfonts/JetBrainsMono-Regular.woff2") format("woff2");
+            font-weight: normal;
+            font-style: normal;
+            letter-spacing: -0.016em;
         }
 
         @font-face {
             font-family: "SharpGroteskVF";
             src: url("styles/fonts/SharpGroteskVariableTrial-subset-latin.woff2") format("woff2");
-            font-stretch: 92%;
-            /* font-weight: 500; */
+            font-stretch: 94%;
             letter-spacing: -0.014em;
             line-height: 1.2;
         }
 
-
         body {
-            margin: 0;
+            margin: 0 1rem;
             font-family: "SharpGroteskVF", Helvetica, Arial, sans-serif;
-            background-color: var(--white-500);
             color: var(--black-500);
-            /* box-sizing: border-box; */
+            background: linear-gradient(0deg, var(--red-100), white 70%);
         }
 
         section {
@@ -72,18 +71,32 @@
 
         /* Style the screen container section */
         .screens {
-            max-width: 600px;
+            background-color: var(--white-500);
+            max-width: 640px;
             margin: 0 auto;
+            margin-bottom: 10rem;
             border: 1px solid var(--red-500);
             padding: 3rem;
+            font-size: 0.875rem;
         }
 
-        .detail {
-            font-size: 0.875rem;
+        .detail,
+        .examples li {
+            font-weight: 500;
+            color: var(--red-900);
+        }
+
+        .detail:last-of-type {
+            margin: 3rem 0 1rem;
         }
 
         .screen-selector {
             display: flex;
+        }
+
+        /* Criteria */
+        .criteria {
+            margin-bottom: 3rem;
         }
 
         /* Style the speech bubbles */
@@ -92,7 +105,59 @@
             background: var(--red-700);
             color: var(--white-500);
             padding: 1.5rem;
+            position: relative;
+            line-height: 150%;
         }
+
+        /* Speech bubble arrows */
+        .question:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            width: 0;
+            height: 0;
+            border: 1.5rem solid transparent;
+            border-top-color: var(--red-700);
+            border-bottom: 0;
+            
+            margin-left: -0.75em;
+            margin-bottom: -1.5rem;
+        }
+        .criteria:nth-child(odd) > .question:after {
+            left: 2rem;
+            border-left: 0;
+        }
+        .criteria:nth-child(even) > .question:after {
+            right: 1.5rem;
+            border-right: 0;
+        }
+
+        
+        /* Style the example bullets */
+        .examples {
+            list-style: none;
+            margin: 0 auto;
+            padding: 0;
+        }
+
+        .criteria:nth-child(odd) > .examples li {
+            padding-left: 4rem;
+        }
+        .criteria:nth-child(odd) > .examples li::before {
+            content: "❌";
+            margin-right: 1em;
+        }
+
+        .criteria:nth-child(even) > .examples li {
+            padding-right: 4rem;
+            text-align: right;
+        }
+        .criteria:nth-child(even) > .examples li::after {
+            content: "❌";
+            margin-left: 1em;
+        }
+
+
 
         #screen-container {
             opacity: 0;
@@ -102,149 +167,123 @@
         #screen-container.is-visible {
             opacity: 1;
         }
+
+        /* Radio buttons */
+        #form {
+            display: flex;
+            flex-wrap: wrap;
+            /* align-items: start; */
+            font-family: "JetBrains Mono";
+            font-size: 0.875rem;
+            margin-top: -0.25rem;
+            margin-left: -0.25rem;
+        }
+
+        #form input {
+            position: absolute;
+            top: 0;
+            left: 0;
+            visibility: hidden;
+            pointer-events: none
+        }
+
+        #form label {
+            cursor: pointer;
+            padding: 0.75rem 1rem;
+            margin: 0.25rem;
+            color: var(--red-700);
+            border: 1px solid var(--red-200);
+            background-color: var(--white-500);
+            transition: all 200ms ease;
+            flex-grow: 1;
+            text-align: center;
+        }
+
+        #form label:hover {
+            background-color: var(--red-200);
+            border-color: var(--red-500);
+        }
+
+        #form input:checked+label {
+            background-color: var(--red-700);
+            color: var(--white-500);
+            border-color: var(--red-700);
+        }
     </style>
 </head>
 
 <body>
     <section>
-        <header>        
-    <h2>#1</h2>
-    <p>We apply industry-leading ethical screens to all our super portfolios.</p>
-    <p>Investments must pass every screen to qualify.</p>
-</header>
-    <div class="screens">
-        <div class="screen-selector">
-        <select id="first-choice">
-            <option value="exclude">We exclude</option>
-            <option value="seek">We seek</option>
-        </select>
+        <header>
+            <h2>#1</h2>
+            <p>We apply industry-leading ethical screens to all our super portfolios.</p>
+            <p>Investments must pass every screen to qualify.</p>
+        </header>
 
+        <div class="screens">
+            <p class="detail">We exclude...</p>
+            <div class="screen-selector">
+                <form id="form">
+                    <!-- Dynamically inserted from data JSON -->
+                </form>
+            </div>
 
-        <select id="second-choice">
-        </select>
-    </div>
+            <p class="detail">Through this criteria...</p>
 
-        <p class="detail">Through this criteria...</p>
+            <!-- Screen-specific info -->
+            <div id="screen-container"></div>
 
-        <!-- Screen-specific info -->
-        <div id="screen-container"></div>
-    </div>
+            <!-- <p>Tap on another item above to see how we screen for it.</p> -->
+        </div>
     </section>
 
-    <script>
-        // What helped me:
-        // https://css-tricks.com/dynamic-dropdowns/
-        // https://stackoverflow.com/a/38444218
-
-        const firstChoice = document.getElementById("first-choice");
-        const secondChoice = document.getElementById("second-choice");
-
+    <script type="module">
+        import data from "/screens.js"
+        const form = document.getElementById("form");
         const screenContainer = document.getElementById("screen-container");
 
-        const data = {
-            "exclude": "Fossil fuels,Gambling,Tobacco",
-            "seek": "Clean energy,Social impact,Healthcare",
-            "detail": [
-                {
-                    "name": "Fossil fuels",
-                    "type": "exclude",
-                    "criteria": [
-                        {
-                            "question": "Is the company involved at all in the exploration or extraction of fossil fuels?",
-                            "examples": ["BHP Billiton", "Woodside Petroleum (fracking)"]
-                        },
-                        {
-                            "question": "Does the company own or operate fossil fuel power generators, or retail fossil fuel-generated electricity?",
-                            "examples": ["Origin Energy", "AGL (burning)"]
-                        }
-                    ]
-                },
-                {
-                    "name": "Gambling",
-                    "type": "exclude",
-                    "criteria": [
-                        {
-                            "question": "Does the company profit from addiction to gambling?",
-                            "examples": ["Woolworths", "Aristocrat Leisure (ownership of poker machines and casinos)"]
-                        },
-                        {
-                            "question": "Does the company provide significant services to the gambling industry?",
-                            "examples": ["Fidelity National Information Services (payment services)"]
-                        }
-                    ]
-                },
-                {
-                    "name": "Tobacco",
-                    "type": "exclude",
-                    "criteria": [
-                        {
-                            "question": "Does the company produce or manufacture tobacco or tobacco products?",
-                            "examples": ["Marlborough"]
-                        },
-                        {
-                            "question": "Does the company provide significant services to the tobacco industry?",
-                            "examples": ["Amcor (packaging)"]
-                        }
-                    ]
-                }
-            ]
-        }
+        const slugify = text =>
+            text
+                .toString()
+                .normalize('NFD')
+                .replace(/[\u0300-\u036f]/g, '')
+                .toLowerCase()
+                .trim()
+                .replace(/\s+/g, '-')
+                .replace(/[^\w-]+/g, '')
+                .replace(/--+/g, '-')
 
-        // Run this to start
-        updateFirstAndSecondChoice()
 
-        // Listen to changes to first select element
-        firstChoice.addEventListener('change', function () {
-            updateFirstAndSecondChoice()
+        // Fill form data
+        Array.from(data.detail).forEach((el) => {
+            // Put this information on screen
+            const input = document.createElement("input");
+            input.type = "radio"
+            input.name = "screen"
+            input.value = el.name
+            input.id = slugify(el.name)
+
+            const label = document.createElement("label")
+            label.htmlFor = slugify(el.name)
+            label.textContent = el.name
+            // Add this input to the form
+            form.appendChild(input)
+            form.appendChild(label)
         });
 
-        // Listen to changes to second select element
-        secondChoice.addEventListener('change', function () {
-            updateSecondChoice()
+        // Preselect first form radio button
+        form.firstElementChild.checked = true
+
+        // Update screening content
+        updateScreenCriteria(form.screen.value);
+
+        // Listen to changes to radio buttons
+        form.addEventListener("change", function () {
+            updateScreenCriteria(form.screen.value);
         });
-
-        // Core function for updating both first and second choices
-        function updateFirstAndSecondChoice() {
-            const key = firstChoice.options[firstChoice.selectedIndex].value
-            let vals = []
-
-            switch (key) {
-                case 'exclude':
-                    vals = data.exclude.split(",")
-                    break;
-                case 'seek':
-                    vals = data.seek.split(",")
-                    break;
-                // Default to exclude
-                default:
-                    vals = data.exclude.split(",")
-            }
-
-            // Remove old secondChoice options
-            while (secondChoice.firstChild) {
-                secondChoice.removeChild(secondChoice.firstChild);
-            }
-
-            // Add new secondChoice options
-            vals.map(value => {
-                let optionElement = document.createElement("option")
-                optionElement.textContent = value
-                optionElement.setAttribute('data-screen', value)
-                secondChoice.appendChild(optionElement);
-            })
-
-
-            // Update secondChoice select
-            updateSecondChoice()
-
-
-        }
-
 
         // Core function for updating just the second choice
-        function updateSecondChoice() {
-            const key = secondChoice.options[secondChoice.selectedIndex].value
-
+        function updateScreenCriteria(screen) {
             // Remove old screenContainer content
             screenContainer.classList.remove("is-visible");
 
@@ -254,13 +293,12 @@
                 }
 
                 // Add new screenContainer content
-                updateScreenContent(key)
-            }, 250)
+                updateScreenContent(screen);
+            }, 250);
 
             setTimeout(function () {
                 screenContainer.classList.add("is-visible");
-            }, 500)
-
+            }, 500);
         }
 
         // Core function for updating the screening content below the selects
@@ -270,32 +308,36 @@
                 //     Find the matching nested object
                 if (el.name == screen) {
                     //       Put this information on screen
-                    const criteria = el.criteria
-                    criteria.map(i => {
-                        const screenSection = document.createElement("div")
+                    const criteria = el.criteria;
+                    criteria.map((i) => {
+                        const screenSection = document.createElement("div");
+                        screenSection.classList.add("criteria")
 
-                        const question = document.createElement("p")
-                        question.textContent = i.question
-                        question.classList.add("question")
+                        const question = document.createElement("p");
+                        question.textContent = i.question;
+                        question.classList.add("question");
 
-                        const examplesContainer = document.createElement("ul")
-                        const examples = i.examples
-                        examples.map(i => {
-                            const exampleItem = document.createElement("li")
-                            exampleItem.textContent = i
-                            exampleItem.classList.add("example")
-                            examplesContainer.appendChild(exampleItem)
-                        })
+                        const examplesContainer = document.createElement("ul");
+                        examplesContainer.classList.add("examples")
 
-                        screenSection.appendChild(question)
-                        screenSection.appendChild(examplesContainer)
-                        screenContainer.appendChild(screenSection)
-                    })
+                        const examples = i.examples;
+                        examples.map((i) => {
+                            const exampleItem = document.createElement("li");
+                            exampleItem.textContent = i;
+                            examplesContainer.appendChild(exampleItem);
+                        });
+
+                        screenSection.appendChild(question);
+                        screenSection.appendChild(examplesContainer);
+                        screenContainer.appendChild(screenSection);
+                    });
                 }
-            })
+            });
             // screenContainer.classList.add("is-visible");
             // console.log(screenContainer.classList)
         }
+
+
     </script>
 </body>
 
