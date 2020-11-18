@@ -31,7 +31,7 @@ export default {
             ],
         },
         {
-            name: "Human and labour rights reporting",
+            name: "Human rights conc",
             criteria: [
                 {
                     question: "Does the company have a recent history of human or labour rights violations?",
@@ -126,7 +126,7 @@ export default {
             ],
         },
         {
-            name: "Uranium mining & nuclear energy",
+            name: "Nuclear energy",
             criteria: [
                 {
                     question: "Does the company mine radioactive materials?",
