@@ -108,7 +108,7 @@ export default {
                 },
                 {
                     question: "Does the company produce controversial animal products (e.g foie gras; ivory)?",
-                    examples: ["TBA"],
+                    examples: ["Burberry Group"],
                 },
             ],
         },

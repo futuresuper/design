@@ -15,6 +15,7 @@
             --red-500: #f04b23;
             --red-700: #db380f;
             --red-900: #3c1631;
+            --yellow-500: #FAC33C;
 
             /* Spacing */
             --margin-page-x: 2.5rem;
@@ -40,8 +41,10 @@
         body {
             margin: 0 1rem;
             font-family: "SharpGroteskVF", Helvetica, Arial, sans-serif;
+            text-rendering: optimizeLegibility;
             color: var(--black-500);
             background: linear-gradient(0deg, var(--red-100), white 70%);
+            overflow-x: clip;
         }
 
         section {
@@ -78,6 +81,8 @@
             border: 1px solid var(--red-500);
             padding: 1.5rem;
             font-size: 0.875rem;
+            /* Allow for absolute positioning of instructions */
+            position: relative;
         }
 
         @media (min-width: 720px) {
@@ -86,18 +91,79 @@
             }
         }
 
-        .detail,
         .examples li {
             font-weight: 500;
             color: var(--red-900);
         }
 
-        .detail:last-of-type {
-            margin: 3rem 0 1rem;
-        }
-
         .screen-selector {
             display: flex;
+        }
+
+        /* Select an item below... */
+        .instruction-bubble {
+            font-size: 0.6875rem;
+            width: 8.5rem;
+            height: 8.5rem;
+            padding: 1rem;
+            top: -3.6rem;
+            right: -2.5rem;
+            background-color: var(--yellow-500);
+            border-radius: 100%;
+            
+            box-sizing: border-box;
+            position: absolute;
+            transform: rotate(12deg);
+            text-align: center;
+            font-family: "JetBrains Mono";
+            transition: 100ms ease-in-out;
+            cursor: default;
+        }
+
+        .instruction-bubble:hover {
+            transform: scale(1.075) rotate(10deg);
+        }
+
+        .instruction-bubble p {
+            line-height: 120%;
+            /* margin: auto auto; */
+            /* vertical-align: middle; */
+            position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -62%);
+        }
+
+        @media (min-width: 720px) {
+            .instruction-bubble {
+                font-size: 0.75rem;
+            width: 10rem;
+            height: 10rem;
+            padding: 1.5rem;
+            top: -6.25rem;
+            right: -2rem;
+            }
+        }
+
+
+
+        /* We exclude X through the following crtieria... */
+        .screen-intro {
+            text-align: center;
+            font-weight: 500;
+            margin: 3rem auto 2rem;
+        }
+
+        .screen-intro p {
+            color: var(--red-900);
+            margin: 0;
+        }
+
+        .screen-intro h3 {
+            font-size: 2rem;
+            color: var(--red-700);
+            font-weight: 500;
+            margin: 0.25rem auto;
         }
 
         /* Criteria */
@@ -125,20 +191,22 @@
             border: 1.5rem solid transparent;
             border-top-color: var(--red-700);
             border-bottom: 0;
-            
+
             margin-left: -0.75em;
             margin-bottom: -1.5rem;
         }
-        .criteria:nth-child(odd) > .question:after {
+
+        .criteria:nth-child(odd)>.question:after {
             left: 2rem;
             border-left: 0;
         }
-        .criteria:nth-child(even) > .question:after {
+
+        .criteria:nth-child(even)>.question:after {
             right: 1.5rem;
             border-right: 0;
         }
 
-        
+
         /* Style the example bullets */
         .examples {
             list-style: none;
@@ -146,31 +214,46 @@
             padding: 0;
         }
 
-        .criteria:nth-child(odd) > .examples li {
-            padding-left: 4rem;
+        .criteria:nth-child(odd)>.examples li {
+            padding-left: 3rem;
         }
-        .criteria:nth-child(odd) > .examples li::before {
+
+        .criteria:nth-child(odd)>.examples li::before {
             content: "❌";
             margin-right: 1em;
         }
 
-        .criteria:nth-child(even) > .examples li {
-            padding-right: 4rem;
+        .criteria:nth-child(even)>.examples li {
+            padding-right: 3rem;
             text-align: right;
         }
-        .criteria:nth-child(even) > .examples li::after {
+
+        .criteria:nth-child(even)>.examples li::after {
             content: "❌";
             margin-left: 1em;
         }
 
+        @media (min-width: 720px) {
+            .criteria:nth-child(odd)>.examples li {
+                padding-left: 8rem;
+            }
 
 
-        #screen-container {
+            .criteria:nth-child(even)>.examples li {
+                padding-right: 8rem;
+            }
+        }
+
+
+
+        #screen-container,
+        #screen-title {
             opacity: 0;
             transition: opacity 250ms ease-in-out;
         }
 
-        #screen-container.is-visible {
+        #screen-container.is-visible,
+        #screen-title.is-visible {
             opacity: 1;
         }
 
@@ -227,19 +310,23 @@
         </header>
 
         <div class="screens">
-            <p class="detail">We exclude...</p>
+            <div class="instruction-bubble">
+                <p>Tap another item to see its ethical screens in detail.</p>
+            </div>
             <div class="screen-selector">
                 <form id="form">
                     <!-- Dynamically inserted from data JSON -->
                 </form>
             </div>
 
-            <p class="detail">Through this criteria...</p>
+            <div class="screen-intro">
+                <p>We exclude</p>
+                <h3 id="screen-title">Fossil fuels</h3>
+                <p>through the following criteria</p>
+            </div>
 
             <!-- Screen-specific info -->
             <div id="screen-container"></div>
-
-            <!-- <p>Tap on another item above to see how we screen for it.</p> -->
         </div>
     </section>
 
@@ -247,6 +334,8 @@
         import data from "./screens.js"
         const form = document.getElementById("form");
         const screenContainer = document.getElementById("screen-container");
+        const screenTitle = document.getElementById("screen-title")
+        // const screenTooltip = document.getElementsByClassName("instructions-bubble")[0]
 
         const slugify = text =>
             text
@@ -292,6 +381,7 @@
         function updateScreenCriteria(screen) {
             // Remove old screenContainer content
             screenContainer.classList.remove("is-visible");
+            screenTitle.classList.remove("is-visible");
 
             setTimeout(function () {
                 while (screenContainer.firstChild) {
@@ -304,6 +394,7 @@
 
             setTimeout(function () {
                 screenContainer.classList.add("is-visible");
+                screenTitle.classList.add("is-visible");
             }, 500);
         }
 
@@ -314,6 +405,7 @@
                 //     Find the matching nested object
                 if (el.name == screen) {
                     //       Put this information on screen
+                    screenTitle.textContent = el.name
                     const criteria = el.criteria;
                     criteria.map((i) => {
                         const screenSection = document.createElement("div");
@@ -339,8 +431,6 @@
                     });
                 }
             });
-            // screenContainer.classList.add("is-visible");
-            // console.log(screenContainer.classList)
         }
 
 
