@@ -10,6 +10,7 @@
             /* Colours */
             --white-500: #ffffff;
             --black-500: #140f14;
+            --green-100: #F3FCF5;
             --red-100: #FDEFEC;
             --red-200: #FACCC2;
             --red-500: #f04b23;
@@ -39,17 +40,26 @@
         }
 
         body {
-            margin: 0 1rem;
+            margin: 0;
             font-family: "SharpGroteskVF", Helvetica, Arial, sans-serif;
             text-rendering: optimizeLegibility;
             color: var(--black-500);
-            background: linear-gradient(0deg, var(--red-100), white 70%);
             overflow-x: clip;
         }
 
-        section {
-            max-width: 960px;
-            margin: 0 auto;
+        /* Exclude */
+        section.exclude {
+            background: linear-gradient(0deg, var(--red-100), white 70%);
+            padding: 0 1rem;
+            padding-bottom: 2rem;
+        }
+
+        /* Seek */
+        section.seek {
+            background: linear-gradient(180deg, var(--red-100), var(--green-100) 50%);
+            min-height: 10rem;
+            /* padding: 0 1rem; */
+            padding-bottom: 20rem;
         }
 
         section header {
@@ -61,7 +71,7 @@
         section header h2 {
             font-size: 7rem;
             font-weight: 500;
-            margin-bottom: 0;
+            margin: 0;
         }
 
         section header p {
@@ -110,7 +120,7 @@
             right: -2.5rem;
             background-color: var(--yellow-500);
             border-radius: 100%;
-            
+
             box-sizing: border-box;
             position: absolute;
             transform: rotate(12deg);
@@ -129,19 +139,19 @@
             /* margin: auto auto; */
             /* vertical-align: middle; */
             position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -62%);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -62%);
         }
 
         @media (min-width: 720px) {
             .instruction-bubble {
                 font-size: 0.75rem;
-            width: 10rem;
-            height: 10rem;
-            padding: 1.5rem;
-            top: -6.25rem;
-            right: -2rem;
+                width: 10rem;
+                height: 10rem;
+                padding: 1.5rem;
+                top: -6.25rem;
+                right: -2rem;
             }
         }
 
@@ -216,6 +226,7 @@
 
         .criteria:nth-child(odd)>.examples li {
             padding-left: 3rem;
+            margin-bottom: 0.25rem;
         }
 
         .criteria:nth-child(odd)>.examples li::before {
@@ -302,7 +313,7 @@
 </head>
 
 <body>
-    <section>
+    <section class="exclude">
         <header>
             <h2>#1</h2>
             <p>We apply industry-leading ethical screens to all our super portfolios.</p>
@@ -328,6 +339,14 @@
             <!-- Screen-specific info -->
             <div id="screen-container"></div>
         </div>
+    </section>
+
+    <section class="seek">
+        <header>
+            <h2>#2</h2>
+            <p>We seek out opportunities that contribute significantly to the future we’re trying to create.</p>
+            <p>We call them impact investments.</p>
+        </header>
     </section>
 
     <script type="module">
@@ -435,6 +454,8 @@
 
 
     </script>
+
+
 </body>
 
 </html>
