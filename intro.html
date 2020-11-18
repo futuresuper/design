@@ -59,18 +59,33 @@
             position: relative;
             transition: background-color 500ms ease;
             background-color: var(--white-500);
+            overflow-x: hidden;
         }
+
         body.harmful {
             background-color: var(--black-500);
 
         }
 
-        .container {
-            /* scroll-snap-type: y mandatory;
-            scroll-snap-stop: always;
-            max-height: 100vh;
-            overflow-y: scroll; */
+        h1,
+        h2,
+        h3 {
+            font-weight: 500;
         }
+
+        h1 {
+            font-size: 20vw;
+            line-height: 100%;
+        }
+
+        header {
+            height: 80vh;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
 
         #shape {
             position: sticky;
@@ -79,10 +94,10 @@
             border-left: 14vw solid transparent;
             border-right: 14vw solid transparent;
             border-bottom: 24vw solid var(--green-500);
-            top: calc(100vh - 24vw - 6rem);
-            left: calc(100% - 24vw - 6rem);
+            top: calc(100vh - 24vw - 9rem);
+            left: calc(100% - 24vw - 3rem);
             transition: all 250ms ease;
-            margin-bottom: 10rem;
+            /* margin-bottom: 4rem; */
         }
 
         #shape.harmful {
@@ -93,63 +108,104 @@
 
 
         section {
-            width: 100%;
-            height: 100vh;
+            /* width: 100%; */
+            /* height: 100vh; */
             /* scroll-snap-align: start; */
         }
 
         section p {
             /* margin: 0; */
+            font-weight: 500;
+            margin-left: 1rem;
+            margin-right: 1rem;
         }
 
         section#part-one,
         section#part-two {
-            height: 80vh;
             font-size: 5vh;
             line-height: 110%;
             /* background: var(--white-500); */
         }
 
-        section#part-one span {
+        section#part-one {
+            /* height: 40vh; */
+            margin-top: 20vh;
+
+        }
+
+        section#part-one span:not(.harmful) {
             color: var(--green-700);
         }
 
         section#part-two {
+            margin-top: 20vh;
+            height: 90vh;
             color: var(--white-500);
-            /* background: var(--black-500); */
         }
 
-        section#part-two span {
+        section#part-two span.harmful {
             color: var(--red-300);
         }
 
-        section#part-three {
+        section#part-three,
+        section#part-four {
             color: var(--white-500);
             background: var(--blue-400);
             text-align: center;
-            font-size: 2rem;
+            font-size: 1.5rem;
+        }
+
+        section#part-three p {
+            padding-top: 10rem;
         }
 
         section#part-three p:first-of-type {
             color: var(--white-500);
+            /* margin-bottom: 10rem; */
         }
 
         section#part-three p:last-of-type {
             color: var(--black-500);
+            padding-top: 10rem;
+            padding-bottom: 10rem;
+        }
+
+        section#part-four {
+            margin-top: -25vh;
+            background: var(--yellow-500);
+            width: 100vw;
+            height: 100vw;
+            border-radius: 100vw;
+            padding: 12vw;
+            /* transform: scale(2); */
+        }
+
+        section#part-four p:first-of-type {
+            font-size: 0.875rem;
+            margin: 0;
+        }
+
+        section#part-four p:last-of-type {
+            color: var(--black-500);
+            margin: 0;
         }
     </style>
 </head>
 
 <body>
+    <header>
+        <h1>How We<br> Invest</h1>
+    </header>
     <div class="container">
-        <div id="shape"></div>
-
         <section id="part-one">
             <p>The super industry’s purpose is to invest and <span>grow</span> Australia’s retirement savings.</p>
         </section>
 
+        <div id="shape"></div>
+
         <section id="part-two">
-            <p class="target">But super funds have consistently invested money in fossil fuels and other <span>harmful</span>
+            <p class="target">But super funds have consistently invested money in fossil fuels and other
+                <span>harmful</span>
                 industries
                 that have set us on a path towards climate change.</p>
         </section>
@@ -159,23 +215,35 @@
         <p>Future Super offers a better way to invest super in (and for) your future.</p>
         <p>We’re committed to being part of the solution to climate change by creating impactful super products.</p>
     </section>
+
+    <!-- <section id="part-four">
+        <p>Our mission</p>
+        <p>Grow retirement savings by investing in a future free from climate change and inequality.</p>
+    </section> -->
     <script>
         const targets = document.querySelectorAll('.target');
         const shape = document.getElementById("shape")
+        const growString = document.getElementById("part-one").querySelectorAll('p')[0].querySelectorAll('span')[0]
+        const harmfulString = targets[0].querySelectorAll('span')[0]
         const config = {
-  rootMargin: '40% 0% -40% 0%',
-//   threshold: [0, 0.25, 0.75, 1]
-};
+            rootMargin: '80% 0% -30% 0%',
+            //   threshold: [0, 0.25, 0.75, 1]
+        };
+
 
         observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.intersectionRatio > 0) {
-                    shape.classList.add('harmful');
                     document.body.classList.add('harmful')
+                    shape.classList.add('harmful');
+                    harmfulString.classList.add('harmful');
+                    growString.classList.add('harmful')
                     // observer.unobserve(entry.target);
                 } else {
                     document.body.classList.remove('harmful');
                     shape.classList.remove('harmful');
+                    harmfulString.classList.remove('harmful');
+                    growString.classList.remove('harmful')
                 }
             });
         }, config);
