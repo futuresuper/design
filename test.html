@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-size: 10rem;
+        }
+
+        #target {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Test
+    </h1>
+    <ul>
+        <li>Test</li>
+        <li>Test</li>
+        <li>Test</li>
+        <li>Test</li>
+        <li>Test</li>
+        <li id="target">Ah hah</li>
+        <li>Test</li>
+        <li>Test</li>
+        <li>Test</li>
+        <li>Test</li>
+        <li>Test</li>
+        <li>Test</li>
+        <li>Test</li>
+        <li>Test</li>
+    </ul>
+</body>
+
+<script>
+    const target = document.querySelector("#target");
+
+
+function handleIntersection(entries) {
+  entries.map((entry) => {
+    if (entry.isIntersecting) {
+    //   entry.target.classList.add('visible')
+      console.log("visible")
+    } else {
+    //   entry.target.classList.remove('visible')
+      console.log("not visible")
+    }
+  });
+}
+
+const observer = new IntersectionObserver(handleIntersection);
+
+observer.observe(target);
+</script>
+
+</html>

@@ -12,6 +12,7 @@
             --black-500: #140f14;
             --blue-400: #4280FF;
             --green-100: #F3FCF5;
+            --green-500: #21873E;
             --green-700: #21873E;
             --red-100: #FDEFEC;
             --red-200: #FACCC2;
@@ -56,106 +57,132 @@
             text-rendering: optimizeLegibility;
             color: var(--black-500);
             position: relative;
+            transition: background-color 500ms ease;
+            background-color: var(--white-500);
         }
+        body.harmful {
+            background-color: var(--black-500);
 
-        #shape {
-            position: absolute;
-            width: 0;
-            height: 0;
-            border-left: 10vw solid transparent;
-            border-right: 10vw solid transparent;
-            border-bottom: 16vw solid black;
-            bottom: 1rem;
-            right: 1rem;
         }
 
         .container {
-            scroll-snap-type: y mandatory;
+            /* scroll-snap-type: y mandatory;
             scroll-snap-stop: always;
             max-height: 100vh;
-            overflow-y: scroll;
-
+            overflow-y: scroll; */
         }
+
+        #shape {
+            position: sticky;
+            width: 0;
+            height: 0;
+            border-left: 14vw solid transparent;
+            border-right: 14vw solid transparent;
+            border-bottom: 24vw solid var(--green-500);
+            top: calc(100vh - 24vw - 6rem);
+            left: calc(100% - 24vw - 6rem);
+            transition: all 250ms ease;
+            margin-bottom: 10rem;
+        }
+
+        #shape.harmful {
+            transform: rotate(180deg);
+            border-bottom: 24vw solid var(--red-500);
+        }
+
+
 
         section {
             width: 100%;
             height: 100vh;
-            scroll-snap-align: start;
+            /* scroll-snap-align: start; */
         }
 
         section p {
-            margin: 0;
+            /* margin: 0; */
+        }
+
+        section#part-one,
+        section#part-two {
+            height: 80vh;
             font-size: 5vh;
+            line-height: 110%;
+            /* background: var(--white-500); */
         }
 
-        section:nth-child(1) {
-            background: var(--white-500);
-        }
-
-        section:nth-child(1) span {
+        section#part-one span {
             color: var(--green-700);
         }
 
-        section:nth-child(2) {
+        section#part-two {
             color: var(--white-500);
-            background: var(--black-500);
+            /* background: var(--black-500); */
         }
 
-        section:nth-child(2) span {
+        section#part-two span {
             color: var(--red-300);
         }
 
-        section:nth-child(3) {
+        section#part-three {
             color: var(--white-500);
             background: var(--blue-400);
+            text-align: center;
+            font-size: 2rem;
         }
 
-        section:nth-child(3) p:first-of-type {
+        section#part-three p:first-of-type {
             color: var(--white-500);
         }
 
-        section:nth-child(3) p:last-of-type {
+        section#part-three p:last-of-type {
             color: var(--black-500);
         }
     </style>
 </head>
 
 <body>
-    <div id="shape"></div>
     <div class="container">
-        <section>
+        <div id="shape"></div>
+
+        <section id="part-one">
             <p>The super industry’s purpose is to invest and <span>grow</span> Australia’s retirement savings.</p>
         </section>
 
-        <section id="second-section">
-            <p id="test">But super funds have consistently invested money in fossil fuels and other <span>harmful</span>
+        <section id="part-two">
+            <p class="target">But super funds have consistently invested money in fossil fuels and other <span>harmful</span>
                 industries
                 that have set us on a path towards climate change.</p>
         </section>
-        <section>
-            <p>Future Super offers a better way to invest super in (and for) your future.</p>
-            <p>We’re committed to being part of the solution to climate change by creating impactful super products.</p>
-        </section>
-    </div>
 
+    </div>
+    <section id="part-three">
+        <p>Future Super offers a better way to invest super in (and for) your future.</p>
+        <p>We’re committed to being part of the solution to climate change by creating impactful super products.</p>
+    </section>
     <script>
-        const myImg = document.querySelector("#test");
+        const targets = document.querySelectorAll('.target');
+        const shape = document.getElementById("shape")
         const config = {
-  rootMargin: '50px 20px 75px 30px',
-  threshold: [0, 0.25, 0.75, 1]
+  rootMargin: '40% 0% -40% 0%',
+//   threshold: [0, 0.25, 0.75, 1]
 };
 
-        // const myImg = document.querySelector('.animate-me');
-
-        observer = new IntersectionObserver((entry, observer) => {
-            if (entry.intersectionRatio > 0) {
-      console.log('in the view');
-    } else {
-      console.log('out of view');
-    }
+        observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.intersectionRatio > 0) {
+                    shape.classList.add('harmful');
+                    document.body.classList.add('harmful')
+                    // observer.unobserve(entry.target);
+                } else {
+                    document.body.classList.remove('harmful');
+                    shape.classList.remove('harmful');
+                }
+            });
         }, config);
 
-        observer.observe(myImg);
+        targets.forEach(t => {
+            observer.observe(t);
+        });
 
     </script>
 </body>
