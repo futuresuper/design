@@ -40,12 +40,19 @@
             line-height: 1.2;
         }
 
+        html,
+        body {
+            overflow-x: hidden;
+            width: 100%;
+        }
+
         body {
             margin: 0;
             font-family: "SharpGroteskVF", Helvetica, Arial, sans-serif;
             text-rendering: optimizeLegibility;
             color: var(--black-500);
-            overflow-x: clip;
+
+
         }
 
         /* Exclude */
@@ -70,13 +77,19 @@
         }
 
         section header h2 {
-            font-size: 7rem;
+            font-size: 5vh;
             font-weight: 500;
             margin: 0;
+            margin-top: 20vh;
+            margin-bottom: 2vh;
+        }
+
+        section header h2 span {
+            color: var(--red-500);
         }
 
         section header p {
-            font-size: 1.5rem;
+            font-size: 1rem;
             line-height: 160%;
             max-width: 420px;
             margin: 0 auto;
@@ -330,7 +343,7 @@
 <body>
     <section class="exclude">
         <header>
-            <h2>#1</h2>
+            <h2>How we <span>exclude</span></h2>
             <p>We apply industry-leading ethical screens to all our super portfolios.</p>
             <p>Investments must pass every screen to qualify.</p>
         </header>

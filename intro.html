@@ -7,12 +7,12 @@
     <title>How We Invest</title>
     <style>
         :root {
-            /* Colours */
+            /* sRGB Colours */
             --white-500: #ffffff;
             --black-500: #140f14;
             --blue-400: #4280FF;
             --green-100: #F3FCF5;
-            --green-500: #21873E;
+            --green-500: #2BB151;
             --green-700: #21873E;
             --red-100: #FDEFEC;
             --red-200: #FACCC2;
@@ -21,6 +21,14 @@
             --red-700: #db380f;
             --red-900: #3c1631;
             --yellow-500: #FAC33C;
+
+            /* TODO test if this makes any difference */
+            /* Display-P3 color, when supported. */
+            @supports (color: color(display-p3 1 1 1)) {
+                :root {
+                    --blue-400: color(display-p3 0.3193 0.4962 0.9671);
+                }
+            }
 
             /* Spacing */
             --margin-page-x: 2.5rem;
@@ -47,6 +55,22 @@
             line-height: 1.2;
         }
 
+        /* html,
+        body {
+            overflow-x: hidden;
+            width: 100%;
+        } */
+
+        /* Utility classes */
+        .text-green {
+            color: var(--green-700);
+        }
+
+        .text-red {
+            color: var(--red-500);
+        }
+
+        /* Element classes */
         html {
             scroll-behavior: smooth;
         }
@@ -59,12 +83,12 @@
             position: relative;
             transition: background-color 500ms ease;
             background-color: var(--white-500);
-            overflow-x: hidden;
+
+            /* position: relative; */
         }
 
-        body.harmful {
+        body.triangle-active {
             background-color: var(--black-500);
-
         }
 
         h1,
@@ -100,7 +124,7 @@
             /* margin-bottom: 4rem; */
         }
 
-        #shape.harmful {
+        #shape.triangle-active {
             transform: rotate(180deg);
             border-bottom: 24vw solid var(--red-500);
         }
@@ -113,21 +137,19 @@
         }
 
         section#part-one,
-        section#part-two {
+        section#part-two,
+        section#part-three {
             font-size: 5vh;
             line-height: 110%;
-            /* background: var(--white-500); */
         }
 
         section#part-one {
-            /* height: 40vh; */
+            /* height: 70vh; */
             margin-top: 20vh;
 
         }
 
-        section#part-one span:not(.harmful) {
-            color: var(--green-700);
-        }
+
 
         section#part-two {
             margin-top: 20vh;
@@ -135,53 +157,114 @@
             color: var(--white-500);
         }
 
-        section#part-two span.harmful {
-            color: var(--red-300);
-        }
 
-        section#part-three,
-        section#part-four {
+
+        section#part-three {
             color: var(--white-500);
-            background: var(--blue-400);
-            /* text-align: center;
-            font-size: 1.5rem; */
+            background-color: var(--blue-400);
+            height: 200vh;
+            /* width: 100%;
+            overflow-x: hidden; */
+            /* overflow-x: hidden; */
+            transition: background-color 500ms ease;
+
             font-size: 4vh;
-            line-height: 110%;
         }
 
-        section#part-three p {
-            padding-top: 10rem;
+        section#part-three.screens-active {
+            background-color: var(--white-500);
         }
 
-        section#part-three p:first-of-type {
-            color: var(--white-500);
-            /* margin-bottom: 10rem; */
-        }
-
-        section#part-three p:last-of-type {
+        section#part-three>p {
+            padding-top: 30vh;
+            margin-bottom: 20vh;
+            text-align: center;
             color: var(--black-500);
-            padding-top: 1rem;
-            padding-bottom: 10rem;
+
+            position: sticky;
+            top: 0;
+            transition: opacity 250ms ease;
         }
 
-        section#part-four {
-            margin-top: -25vh;
+        section#part-three>p.mission-active {
+            opacity: 0;
+        }
+
+        #mission {
             background: var(--yellow-500);
+            border-radius: 100vw;
+
+            display: flex;
+            align-items: center;
+
+            /* width: 120vw;
+            height: 120vw;
+            margin-left: -10vw; 
+            padding: 12vw; */
+
             width: 100vw;
             height: 100vw;
-            border-radius: 100vw;
             padding: 12vw;
-            /* transform: scale(2); */
+
+            position: sticky;
+            top: 15vh;
+
+            transition: all 500ms ease;
+            transform: scale(0.2);
         }
 
-        section#part-four p:first-of-type {
-            font-size: 0.875rem;
-            margin: 0;
+        #mission.mission-active {
+            transform: scale(1);
         }
 
-        section#part-four p:last-of-type {
+        #mission p {
+            text-align: center;
             color: var(--black-500);
-            margin: 0;
+            /* font-size: 1rem; */
+            opacity: 0;
+        }
+
+        #mission.mission-active p {
+            opacity: 1;
+        }
+
+        /* part-four */
+        section#part-four {
+            text-align: center;
+            font-size: 4vh;
+            line-height: 120%;
+            margin-top: 20vh;
+        }
+
+        section#part-four p {
+            margin-top: 8vh;
+            margin-bottom: 8vh;
+        }
+
+        section#part-four .seek {
+            margin-top: 6vh;
+        }
+
+        section#part-four .exclude {
+            /* margin-top: 40vh; */
+            margin-top: 16vh;
+        }
+
+        section#part-extra {
+            height: 100vh;
+        }
+
+        .screen-img {
+            width: 20vw;
+            opacity: 0;
+            transform: scale(0);
+            transition: all 500ms ease;
+            margin-bottom: 2vh;
+        }
+
+        .screen-img.screen-icon-active {
+            opacity: 1;
+            transform: scale(1);
         }
     </style>
 </head>
@@ -192,14 +275,15 @@
     </header>
     <div class="container">
         <section id="part-one">
-            <p>The super industry’s purpose is to invest and <span>grow</span> Australia’s retirement savings.</p>
+            <p>The super industry’s purpose is to invest and <span class="text-green">grow</span> Australia’s retirement
+                savings.</p>
         </section>
 
         <div id="shape"></div>
 
         <section id="part-two">
             <p class="target">But super funds have consistently invested money in fossil fuels and other
-                <span>harmful</span>
+                <span class="text-red">harmful</span>
                 industries
                 that have set us on a path towards climate change.</p>
         </section>
@@ -207,44 +291,175 @@
     </div>
     <section id="part-three">
         <p>Future Super offers a better way to invest super for your future.</p>
-        <p>Here's how.</p>
+        <div id="mission" class="target-mission">
+            <p>We grow retirement savings by investing in a future free from climate change and inequality.</p>
+        </div>
     </section>
 
-    <!-- <section id="part-four">
-        <p>Our mission</p>
-        <p>Grow retirement savings by investing in a future free from climate change and inequality.</p>
-    </section> -->
+    <section id="part-four" class="target-screens">
+        <div class="seek">
+            <img class="screen-img" src="img/globe-green.svg" alt="">
+            <img class="screen-img" src="img/globe-green.svg" alt="">
+            <img class="screen-img" src="img/globe-green.svg" alt="">
+            <img class="screen-img" src="img/globe-green.svg" alt="">
+            <img class="screen-img" src="img/globe-green.svg" alt="">
+            <img class="screen-img" src="img/globe-green.svg" alt="">
+            <img class="screen-img" src="img/globe-green.svg" alt="">
+            <img class="screen-img" src="img/globe-green.svg" alt="">
+            <p>The way we achieve this relies on what we <span class="text-green">seek</span> from your investments...
+            </p>
+            <img class="screen-img" src="img/globe-green.svg" alt="">
+            <img class="screen-img" src="img/globe-green.svg" alt="">
+            <img class="screen-img" src="img/globe-green.svg" alt="">
+            <img class="screen-img" src="img/globe-green.svg" alt="">
+            <img class="screen-img" src="img/globe-green.svg" alt="">
+            <img class="screen-img" src="img/globe-green.svg" alt="">
+            <img class="screen-img" src="img/globe-green.svg" alt="">
+            <img class="screen-img" src="img/globe-green.svg" alt="">
+        </div>
+        <div class="exclude">
+            <img class="screen-img" src="img/globe-red.svg" alt="">
+            <img class="screen-img" src="img/globe-red.svg" alt="">
+            <img class="screen-img" src="img/globe-red.svg" alt="">
+            <img class="screen-img" src="img/globe-red.svg" alt="">
+            <img class="screen-img" src="img/globe-red.svg" alt="">
+            <img class="screen-img" src="img/globe-red.svg" alt="">
+            <img class="screen-img" src="img/globe-red.svg" alt="">
+            <img class="screen-img" src="img/globe-red.svg" alt="">
+            <p>...and what we <span class="text-red">exclude</span> from your investments.</p>
+            <img class="screen-img" src="img/globe-red.svg" alt="">
+            <img class="screen-img" src="img/globe-red.svg" alt="">
+            <img class="screen-img" src="img/globe-red.svg" alt="">
+            <img class="screen-img" src="img/globe-red.svg" alt="">
+            <img class="screen-img" src="img/globe-red.svg" alt="">
+            <img class="screen-img" src="img/globe-red.svg" alt="">
+            <img class="screen-img" src="img/globe-red.svg" alt="">
+            <img class="screen-img" src="img/globe-red.svg" alt="">
+        </div>
+    </section>
+
+    <section id="part-extra">
+    </section>
+
     <script>
+        // Observe and animate around triangle
         const targets = document.querySelectorAll('.target');
         const shape = document.getElementById("shape")
         const growString = document.getElementById("part-one").querySelectorAll('p')[0].querySelectorAll('span')[0]
         const harmfulString = targets[0].querySelectorAll('span')[0]
-        const config = {
-            rootMargin: '80% 0% -30% 0%',
-            //   threshold: [0, 0.25, 0.75, 1]
+        const options = {
+            // root: null // Default to viewport
+            //   threshold: [0, 0.25, 0.75, 1],
+            rootMargin: '80% 0% -30% 0%'
         };
 
-
-        observer = new IntersectionObserver((entries) => {
+        const traingleObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.intersectionRatio > 0) {
-                    document.body.classList.add('harmful')
-                    shape.classList.add('harmful');
-                    harmfulString.classList.add('harmful');
-                    growString.classList.add('harmful')
+                    document.body.classList.add('triangle-active')
+                    shape.classList.add('triangle-active');
+                    harmfulString.classList.add('triangle-active');
+                    growString.classList.add('triangle-active')
                     // observer.unobserve(entry.target);
                 } else {
-                    document.body.classList.remove('harmful');
-                    shape.classList.remove('harmful');
-                    harmfulString.classList.remove('harmful');
-                    growString.classList.remove('harmful')
+                    document.body.classList.remove('triangle-active');
+                    shape.classList.remove('triangle-active');
+                    harmfulString.classList.remove('triangle-active');
+                    growString.classList.remove('triangle-active')
+                }
+
+                if (entry.intersectionRatio === 1) {
+                    console.log("ddone")
                 }
             });
-        }, config);
+        }, options);
 
         targets.forEach(t => {
-            observer.observe(t);
+            traingleObserver.observe(t);
         });
+
+
+        // Observe and animate around mission
+        const missionTargets = document.querySelectorAll('.target-mission');
+        const missionParentSection = document.getElementById("part-three")
+        const missionEl = document.getElementById("mission")
+        const stringBeforeMission = missionParentSection.querySelectorAll('p')[0]
+        const missionOptions = {
+            // root: null // Default to viewport
+            // threshold: 0.15
+            rootMargin: '0 0 -50% 0'
+        };
+
+        const missionObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.intersectionRatio > 0) {
+                    // missionParentSection.classList.add('mission-active')
+                    missionEl.classList.add('mission-active')
+                    stringBeforeMission.classList.add('mission-active')
+                } else {
+                    missionParentSection.classList.remove('mission-active')
+                    missionEl.classList.remove('mission-active')
+                    stringBeforeMission.classList.remove('mission-active')
+                }
+            });
+        }, missionOptions);
+
+        missionTargets.forEach(t => {
+            missionObserver.observe(t);
+        });
+
+
+        // Observe and animate around screens
+        const screensTargets = document.querySelectorAll('.target-screens');
+        const screensParentSection = document.getElementById("part-four")
+        const screensOptions = {
+            // root: null // Default to viewport
+            // threshold: 0.15
+            rootMargin: '0 0 50% 0'
+        };
+
+        const screensObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.intersectionRatio > 0) {
+                    missionParentSection.classList.add('screens-active')
+                    // screensParentSection.classList.add('screens-active')
+                } else {
+                    missionParentSection.classList.remove('screens-active')
+                    // screensParentSection.classList.remove('screens-active')
+                }
+            });
+        }, screensOptions);
+
+        screensTargets.forEach(t => {
+            screensObserver.observe(t);
+        });
+
+        // Observe and animate around screen icons
+        const screenIconsTargets = document.querySelectorAll('.screen-img');
+        const screenIconsOptions = {
+            // root: null // Default to viewport
+            // threshold: 0.15
+            rootMargin: '0 0 -20% 0'
+        };
+
+        const screenIconsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.intersectionRatio > 0) {
+                    entry.target.classList.add('screen-icon-active')
+                    // missionParentSection.classList.add('screens-active')
+                    // screensParentSection.classList.add('screens-active')
+                } else {
+                    entry.target.classList.remove('screen-icon-active')
+                    // missionParentSection.classList.remove('screens-active')
+                    // screensParentSection.classList.remove('screens-active')
+                }
+            });
+        }, screenIconsOptions);
+
+        screenIconsTargets.forEach(t => {
+            screenIconsObserver.observe(t);
+        });
+
 
     </script>
 </body>
