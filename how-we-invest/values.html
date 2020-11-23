@@ -1,156 +1,152 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>How We Invest | Future Super</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../styles/colours.css">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>How We Invest | Future Super</title>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="../styles/colours.css">
 
-    <style>
-        html {
-	scroll-behavior: smooth;
-}
-
-        @font-face {
-            font-family: "SharpGrotesk";
-            src: url("../styles/fonts/SharpGroteskVariableTrial-subset-latin.woff2") format("woff2");
-            font-weight: 500
-        }
-
-        body {
-            margin: 0;
-            font-family: "SharpGrotesk", Helvetica, sans-serif;
-            font-weight: bold;
-            color: white;
-            /* display: flex; */
-        }
-
-        section {
-            box-sizing: border-box;
-            padding: 10rem;
-            width: 100vw;
-            height: 50vh;
-            display: flex;
-        }
-
-        section:first-of-type,
-        #fossil-fuels-section {
-            background-color: var(--red-900);
-        }
-
-        section:last-of-type,
-        #renewables-technology-section {
-            background-color: var(--green-700);
-        }
-
-
-        section h2,
-        section ul li {
-            margin: 0;
-            font-size: 3rem;
-            font-weight: 500;
-            line-height: 6rem;
-        }
-
-        section ul li a {
-            color: inherit;
-        }
-
-        section .header {
-            width: 40%;
-        }
-
-        section ul {
-            list-style-type: none;
-            padding-left: 0;
-            margin: 0;
-        }
-
-        section .header,
-        section .carousel {
-            height: 6rem;
-            /* width: 60%; */
-            /* width: 50%; */
-        }
-
-
-        section .carousel {
-            width: 60%;
-            overflow: hidden;
-            /* display: inline-block; */
-            /* vertical-align: top; */
-            margin: 0;
-        }
-
-        .inner {
-            animation: scrollFiveItems 10s ease-in-out infinite;
-        }
-
-        .inner:hover {
-            animation-play-state: paused;
-            cursor: pointer;
-        }
-
-
-        @keyframes scrollFiveItems {
-
-            0%,
-            20% {
-                transform: translateY(0);
+        <style>
+            html {
+                scroll-behavior: smooth;
             }
 
-            25%,
-            45% {
-                transform: translateY(-6rem);
+            @font-face {
+                font-family: "SharpGrotesk";
+                src: url("../styles/fonts/SGVT-subset-latin.woff2") format("woff2");
+                font-weight: 500;
             }
 
-            50%,
-            70% {
-                transform: translateY(-12rem);
+            body {
+                margin: 0;
+                font-family: "SharpGrotesk", Helvetica, sans-serif;
+                font-weight: bold;
+                color: white;
+                /* display: flex; */
             }
 
-            75%,
-            95% {
-                transform: translateY(-18rem);
+            section {
+                box-sizing: border-box;
+                padding: 10rem;
+                width: 100vw;
+                height: 50vh;
+                display: flex;
             }
 
-            100% {
-                transform: translateY(-24rem);
+            #fossil-fuels-section,
+            section:first-of-type {
+                background-color: var(--red-900);
             }
-        }
 
-        .hidden {
-            display: none;
-        }
+            #renewables-technology-section,
+            section:last-of-type {
+                background-color: var(--green-700);
+            }
 
-        .visible {
-            display: inherit;
-            height: 50vh;
-            padding: 10rem;
-        }
+            section h2,
+            section ul li {
+                margin: 0;
+                font-size: 3rem;
+                font-weight: 500;
+                line-height: 6rem;
+            }
 
-    </style>
-</head>
+            section ul li a {
+                color: inherit;
+            }
 
-<body>
-    <section>
-        <div class="header">
-            <h2>We exclude</h2>
-        </div>
-        <div class="carousel">
-            <ul class="inner">
-                <li>
-                    <a id="fossil-fuels-button" href="#fossil-fuels-section">
+            section .header {
+                width: 40%;
+            }
+
+            section ul {
+                list-style-type: none;
+                padding-left: 0;
+                margin: 0;
+            }
+
+            section .carousel,
+            section .header {
+                height: 6rem;
+                /* width: 60%; */
+                /* width: 50%; */
+            }
+
+            section .carousel {
+                width: 60%;
+                overflow: hidden;
+                /* display: inline-block; */
+                /* vertical-align: top; */
+                margin: 0;
+            }
+
+            .inner {
+                animation: scrollFiveItems 10s ease-in-out infinite;
+            }
+
+            .inner:hover {
+                animation-play-state: paused;
+                cursor: pointer;
+            }
+
+            @keyframes scrollFiveItems {
+
+                0%,
+                20% {
+                    transform: translateY(0);
+                }
+
+                25%,
+                45% {
+                    transform: translateY(-6rem);
+                }
+
+                50%,
+                70% {
+                    transform: translateY(-12rem);
+                }
+
+                75%,
+                95% {
+                    transform: translateY(-18rem);
+                }
+
+                100% {
+                    transform: translateY(-24rem);
+                }
+            }
+
+            .hidden {
+                display: none;
+            }
+
+            .visible {
+                display: inherit;
+                height: 50vh;
+                padding: 10rem;
+            }
+        </style>
+    </head>
+
+    <body>
+        <section>
+            <div class="header">
+                <h2>We exclude</h2>
+            </div>
+            <div class="carousel">
+                <ul class="inner">
+                    <li>
+                        <a id="fossil-fuels-button" href="#fossil-fuels-section">
                         Fossil fuels
                     </a>
-                </li>
-                <li>Armaments</li>
-                <li>Gambling</li>
-                <li>Human and labour rights concerns</li>
-                <li>Fossil fuels</li>
-                <!-- <li>Destruction of valuable environments</li>
+                    </li>
+                    <li>Armaments</li>
+                    <li>Gambling</li>
+                    <li>Human and labour rights concerns</li>
+                    <li>Fossil fuels</li>
+                    <!-- <li>Destruction of valuable environments</li>
                 <li>Detention centres and for-profit prisons</li>
                 <li>Board gender diversity</li>
                 
@@ -162,58 +158,58 @@
                 <li>Pornography</li>
                 <li>Junk Food</li>
                 <li>Chemicals of concern</li> -->
-            </ul>
-        </div>
-    </section>
-    <div id="fossil-fuels-section" class="information hidden">
-        <h2>Fossil fuels</h2>
-        <p>Future Super does not invest in any company that extracts, burns, relies on or provides significant services to
+                </ul>
+            </div>
+        </section>
+        <div id="fossil-fuels-section" class="information hidden">
+            <h2>Fossil fuels</h2>
+            <p>Future Super does not invest in any company that extracts, burns, relies on or provides significant services to
             the fossil fuel industry. </p>
-    </div>
-    <section>
-        <div class="header">
-            <h2>We preference</h2>
         </div>
-        <div class="carousel">
-            <ul class="inner">
-                <li>Clean energy</li>
-                <li>
-                    <a id="renewables-technology-button" href="#renewables-technology-section">
+        <section>
+            <div class="header">
+                <h2>We preference</h2>
+            </div>
+            <div class="carousel">
+                <ul class="inner">
+                    <li>Clean energy</li>
+                    <li>
+                        <a id="renewables-technology-button" href="#renewables-technology-section">
                         Renewables technology
                     </a>
-                </li>
-                <li>Sustainable agriculture</li>
-                <li>Social impact</li>
-                <!-- <li>Healthcare</li> -->
-                <li>Clean energy</li>
-            </ul>
+                    </li>
+                    <li>Sustainable agriculture</li>
+                    <li>Social impact</li>
+                    <!-- <li>Healthcare</li> -->
+                    <li>Clean energy</li>
+                </ul>
+            </div>
+        </section>
+        <div id="renewables-technology-section" class="information hidden">
+            <h2>Renewables technology</h2>
+            <p>Future Super preferences companies that produce technology for renewable energy.</p>
         </div>
-    </section>
-    <div id="renewables-technology-section" class="information hidden">
-        <h2>Renewables technology</h2>
-        <p>Future Super preferences companies that produce technology for renewable energy.</p>
-    </div>
-    
-    <script>
-        const renewablesTechnologyButton = document.getElementById('renewables-technology-button')
-        const renewablesTechnologySection = document.getElementById('renewables-technology-section');
 
-        renewablesTechnologyButton.onclick = function () {
-            renewablesTechnologySection.removeAttribute('class', 'hidden');
-            renewablesTechnologySection.setAttribute('class', 'visible');
-            // renewablesTechnologySection.scrollIntoView();
-        };
+        <script>
+            const renewablesTechnologyButton = document.getElementById('renewables-technology-button')
+            const renewablesTechnologySection = document.getElementById('renewables-technology-section');
 
-        const fossilFuelsButton = document.getElementById('fossil-fuels-button')
-        const fossilFuelsSection = document.getElementById('fossil-fuels-section');
+            renewablesTechnologyButton.onclick = function () {
+                renewablesTechnologySection.removeAttribute('class', 'hidden');
+                renewablesTechnologySection.setAttribute('class', 'visible');
+                // renewablesTechnologySection.scrollIntoView();
+            };
 
-        fossilFuelsButton.onclick = function () {
-            fossilFuelsSection.removeAttribute('class', 'hidden');
-            fossilFuelsSection.setAttribute('class', 'visible');
-            // fossilFuelsSection.scrollIntoView();
-        };
-    </script>
+            const fossilFuelsButton = document.getElementById('fossil-fuels-button')
+            const fossilFuelsSection = document.getElementById('fossil-fuels-section');
 
-</body>
+            fossilFuelsButton.onclick = function () {
+                fossilFuelsSection.removeAttribute('class', 'hidden');
+                fossilFuelsSection.setAttribute('class', 'visible');
+                // fossilFuelsSection.scrollIntoView();
+            };
+        </script>
+
+    </body>
 
 </html>

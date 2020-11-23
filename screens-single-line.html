@@ -1,274 +1,267 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>How We Invest</title>
-    <style>
-        :root {
-            /* Colours */
-            --white-500: #ffffff;
-            --black-500: #140f14;
-            --red-100: #FDEFEC;
-            --red-200: #FACCC2;
-            --red-500: #f04b23;
-            --red-700: #db380f;
-            --red-900: #3c1631;
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <title>How We Invest</title>
+        <style>
+            :root {
+                /* Colours */
+                --white-500: #ffffff;
+                --black-500: #140f14;
+                --red-100: #FDEFEC;
+                --red-200: #FACCC2;
+                --red-500: #f04b23;
+                --red-700: #db380f;
+                --red-900: #3c1631;
 
-            /* Spacing */
-            --margin-page-x: 2.5rem;
-            --padding-section-y: 3rem;
-        }
+                /* Spacing */
+                --margin-page-x: 2.5rem;
+                --padding-section-y: 3rem;
+            }
 
-        @font-face {
-            font-family: "JetBrains Mono";
-            src: url("https://raw.githubusercontent.com/JetBrains/JetBrainsMono/master/fonts/webfonts/JetBrainsMono-Regular.woff2") format("woff2");
-            font-weight: normal;
-            font-style: normal;
-            letter-spacing: -0.016em;
-        }
+            @font-face {
+                font-family: "JetBrains Mono";
+                src: url("https://raw.githubusercontent.com/JetBrains/JetBrainsMono/master/fonts/webfonts/JetBrainsMono-Regular.woff2") format("woff2");
+                font-weight: normal;
+                font-style: normal;
+                letter-spacing: -0.016em;
+            }
 
-        @font-face {
-            font-family: "SharpGroteskVF";
-            src: url("styles/fonts/SharpGroteskVariableTrial-subset-latin.woff2") format("woff2");
-            font-stretch: 94%;
-            letter-spacing: -0.014em;
-            line-height: 1.2;
-        }
+            @font-face {
+                font-family: "SharpGroteskVF";
+                src: url("styles/fonts/SGVT-subset-latin.woff2") format("woff2");
+                font-stretch: 94%;
+                letter-spacing: -0.014em;
+                line-height: 1.2;
+            }
 
-        body {
-            margin: 0 1rem;
-            font-family: "SharpGroteskVF", Helvetica, Arial, sans-serif;
-            color: var(--black-500);
-            background: linear-gradient(0deg, var(--red-100), white 70%);
-        }
+            body {
+                margin: 0 1rem;
+                font-family: "SharpGroteskVF", Helvetica, Arial, sans-serif;
+                color: var(--black-500);
+                background: linear-gradient(0deg, var(--red-100), white 70%);
+            }
 
-        section {
-            max-width: 960px;
-            margin: 0 auto;
-        }
+            section {
+                max-width: 960px;
+                margin: 0 auto;
+            }
 
-        section header {
-            text-align: center;
-            margin: 0 auto;
-            margin-bottom: 4rem;
-        }
+            section header {
+                text-align: center;
+                margin: 0 auto 4rem;
+            }
 
-        section header h2 {
-            font-size: 7rem;
-            font-weight: 500;
-            margin-bottom: 0;
-        }
+            section header h2 {
+                font-size: 7rem;
+                font-weight: 500;
+                margin-bottom: 0;
+            }
 
-        section header p {
-            font-size: 1.5rem;
-            line-height: 160%;
-            max-width: 420px;
-            margin: 0 auto;
-            margin-bottom: 0.5rem;
-        }
+            section header p {
+                font-size: 1.5rem;
+                line-height: 160%;
+                max-width: 420px;
+                margin: 0 auto 0.5rem;
+            }
 
-        /* Style the screen container section */
-        .screens {
-            background-color: var(--white-500);
-            max-width: 640px;
-            margin: 0 auto;
-            margin-bottom: 10rem;
-            border: 1px solid var(--red-500);
-            padding: 1.5rem;
-            font-size: 0.875rem;
-        }
-
-        @media (min-width: 720px) {
+            /* Style the screen container section */
             .screens {
-                padding: 3rem;
+                background-color: var(--white-500);
+                max-width: 640px;
+                margin: 0 auto 10rem;
+                border: 1px solid var(--red-500);
+                padding: 1.5rem;
+                font-size: 0.875rem;
             }
-        }
 
-        .detail,
-        .examples li {
-            font-weight: 500;
-            color: var(--red-900);
-        }
+            @media (min-width: 720px) {
+                .screens {
+                    padding: 3rem;
+                }
+            }
 
-        .detail:last-of-type {
-            margin: 3rem 0 1rem;
-        }
+            .detail,
+            .examples li {
+                font-weight: 500;
+                color: var(--red-900);
+            }
 
-        .screen-selector {
-            display: flex;
-            margin-left: -1.5rem;
-            width: calc(100% + 1.5rem + 1.5rem);
-            overflow-x: scroll;
-        }
+            .detail:last-of-type {
+                margin: 3rem 0 1rem;
+            }
 
-        @media (min-width: 720px) {
             .screen-selector {
-                margin-left: -3rem;
-                width: calc(100% + 3rem  + 3rem);
+                display: flex;
+                margin-left: -1.5rem;
+                width: calc(100% + 1.5rem + 1.5rem);
+                overflow-x: scroll;
             }
-        }
 
-        /* Criteria */
-        .criteria {
-            margin-bottom: 3rem;
-        }
+            @media (min-width: 720px) {
+                .screen-selector {
+                    margin-left: -3rem;
+                    width: calc(100% + 3rem + 3rem);
+                }
+            }
 
-        /* Style the speech bubbles */
-        .question {
-            font-family: "JetBrains Mono";
-            background: var(--red-700);
-            color: var(--white-500);
-            padding: 1.5rem;
-            position: relative;
-            line-height: 150%;
-        }
+            /* Criteria */
+            .criteria {
+                margin-bottom: 3rem;
+            }
 
-        /* Speech bubble arrows */
-        .question:after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            width: 0;
-            height: 0;
-            border: 1.5rem solid transparent;
-            border-top-color: var(--red-700);
-            border-bottom: 0;
+            /* Style the speech bubbles */
+            .question {
+                font-family: "JetBrains Mono";
+                background: var(--red-700);
+                color: var(--white-500);
+                padding: 1.5rem;
+                position: relative;
+                line-height: 150%;
+            }
 
-            margin-left: -0.75em;
-            margin-bottom: -1.5rem;
-        }
+            /* Speech bubble arrows */
+            .question:after {
+                content: '';
+                position: absolute;
+                bottom: 0;
+                width: 0;
+                height: 0;
+                border: 1.5rem solid transparent;
+                border-top-color: var(--red-700);
+                border-bottom: 0;
 
-        .criteria:nth-child(odd)>.question:after {
-            left: 2rem;
-            border-left: 0;
-        }
+                margin-left: -0.75em;
+                margin-bottom: -1.5rem;
+            }
 
-        .criteria:nth-child(even)>.question:after {
-            right: 1.5rem;
-            border-right: 0;
-        }
+            .criteria:nth-child(odd) > .question:after {
+                left: 2rem;
+                border-left: 0;
+            }
 
+            .criteria:nth-child(even) > .question:after {
+                right: 1.5rem;
+                border-right: 0;
+            }
 
-        /* Style the example bullets */
-        .examples {
-            list-style: none;
-            margin: 0 auto;
-            padding: 0;
-        }
+            /* Style the example bullets */
+            .examples {
+                list-style: none;
+                margin: 0 auto;
+                padding: 0;
+            }
 
-        .criteria:nth-child(odd)>.examples li {
-            padding-left: 4rem;
-        }
+            .criteria:nth-child(odd) > .examples li {
+                padding-left: 4rem;
+            }
 
-        .criteria:nth-child(odd)>.examples li::before {
-            content: "❌";
-            margin-right: 1em;
-        }
+            .criteria:nth-child(odd) > .examples li::before {
+                content: "❌";
+                margin-right: 1em;
+            }
 
-        .criteria:nth-child(even)>.examples li {
-            padding-right: 4rem;
-            text-align: right;
-        }
+            .criteria:nth-child(even) > .examples li {
+                padding-right: 4rem;
+                text-align: right;
+            }
 
-        .criteria:nth-child(even)>.examples li::after {
-            content: "❌";
-            margin-left: 1em;
-        }
+            .criteria:nth-child(even) > .examples li::after {
+                content: "❌";
+                margin-left: 1em;
+            }
 
+            #screen-container {
+                opacity: 0;
+                transition: opacity 250ms ease-in-out;
+            }
 
+            #screen-container.is-visible {
+                opacity: 1;
+            }
 
-        #screen-container {
-            opacity: 0;
-            transition: opacity 250ms ease-in-out;
-        }
-
-        #screen-container.is-visible {
-            opacity: 1;
-        }
-
-        /* Radio buttons */
-        #form {
-            display: flex;
-            flex-wrap: nowrap;
-            flex-shrink: 0;
-            font-family: "JetBrains Mono";
-            font-size: 0.875rem;
-            margin-top: -0.25rem;
-            margin-left: calc(-0.25rem + 1.5rem);
-        }
-
-        @media (min-width: 720px) {
+            /* Radio buttons */
             #form {
-                margin-left: calc(-0.25rem + 3rem);
+                display: flex;
+                flex-wrap: nowrap;
+                flex-shrink: 0;
+                font-family: "JetBrains Mono";
+                font-size: 0.875rem;
+                margin-top: -0.25rem;
+                margin-left: calc(-0.25rem + 1.5rem);
             }
-        }
 
-        #form input {
-            position: absolute;
-            top: 0;
-            left: 0;
-            visibility: hidden;
-            pointer-events: none
-        }
+            @media (min-width: 720px) {
+                #form {
+                    margin-left: calc(-0.25rem + 3rem);
+                }
+            }
 
-        #form label {
-            cursor: pointer;
-            padding: 0.75rem 1rem;
-            margin: 0.25rem;
-            color: var(--red-700);
-            border: 1px solid var(--red-200);
-            background-color: var(--white-500);
-            transition: all 200ms ease;
-            flex-grow: 2;
-        }
+            #form input {
+                position: absolute;
+                top: 0;
+                left: 0;
+                visibility: hidden;
+                pointer-events: none;
+            }
 
-        #form label:hover {
-            background-color: var(--red-200);
-            border-color: var(--red-500);
-        }
+            #form label {
+                cursor: pointer;
+                padding: 0.75rem 1rem;
+                margin: 0.25rem;
+                color: var(--red-700);
+                border: 1px solid var(--red-200);
+                background-color: var(--white-500);
+                transition: all 200ms ease;
+                flex-grow: 2;
+            }
 
-        #form input:checked+label {
-            background-color: var(--red-700);
-            color: var(--white-500);
-            border-color: var(--red-700);
-        }
-    </style>
-</head>
+            #form label:hover {
+                background-color: var(--red-200);
+                border-color: var(--red-500);
+            }
 
-<body>
-    <section>
-        <header>
-            <h2>#1</h2>
-            <p>We apply industry-leading ethical screens to all our super portfolios.</p>
-            <p>Investments must pass every screen to qualify.</p>
-        </header>
+            #form input:checked+label {
+                background-color: var(--red-700);
+                color: var(--white-500);
+                border-color: var(--red-700);
+            }
+        </style>
+    </head>
 
-        <div class="screens">
-            <p class="detail">We exclude...</p>
-            <div class="screen-selector">
-                <form id="form">
-                    <!-- Dynamically inserted from data JSON -->
-                </form>
+    <body>
+        <section>
+            <header>
+                <h2>#1</h2>
+                <p>We apply industry-leading ethical screens to all our super portfolios.</p>
+                <p>Investments must pass every screen to qualify.</p>
+            </header>
+
+            <div class="screens">
+                <p class="detail">We exclude...</p>
+                <div class="screen-selector">
+                    <form id="form">
+                        <!-- Dynamically inserted from data JSON -->
+                    </form>
+                </div>
+
+                <p class="detail">Through this criteria...</p>
+
+                <!-- Screen-specific info -->
+                <div id="screen-container"></div>
+
+                <!-- <p>Tap on another item above to see how we screen for it.</p> -->
             </div>
+        </section>
 
-            <p class="detail">Through this criteria...</p>
+        <script type="module">
+            import data from "./screens.js"
+            const form = document.getElementById("form");
+            const screenContainer = document.getElementById("screen-container");
 
-            <!-- Screen-specific info -->
-            <div id="screen-container"></div>
-
-            <!-- <p>Tap on another item above to see how we screen for it.</p> -->
-        </div>
-    </section>
-
-    <script type="module">
-        import data from "./screens.js"
-        const form = document.getElementById("form");
-        const screenContainer = document.getElementById("screen-container");
-
-        const slugify = text =>
-            text
+            const slugify = text => text
                 .toString()
                 .normalize('NFD')
                 .replace(/[\u0300-\u036f]/g, '')
@@ -278,90 +271,101 @@
                 .replace(/[^\w-]+/g, '')
                 .replace(/--+/g, '-')
 
+            // Fill form data
+            Array
+                .from(data.detail)
+                .forEach((el) => {
+                    // Put this information on screen
+                    const input = document.createElement("input");
+                    input.type = "radio"
+                    input.name = "screen"
+                    input.value = el.name
+                    input.id = slugify(el.name)
 
-        // Fill form data
-        Array.from(data.detail).forEach((el) => {
-            // Put this information on screen
-            const input = document.createElement("input");
-            input.type = "radio"
-            input.name = "screen"
-            input.value = el.name
-            input.id = slugify(el.name)
+                    const label = document.createElement("label")
+                    label.htmlFor = slugify(el.name)
+                    label.textContent = el.name
+                    // Add this input to the form
+                    form.appendChild(input)
+                    form.appendChild(label)
+                });
 
-            const label = document.createElement("label")
-            label.htmlFor = slugify(el.name)
-            label.textContent = el.name
-            // Add this input to the form
-            form.appendChild(input)
-            form.appendChild(label)
-        });
+            // Preselect first form radio button
+            form.firstElementChild.checked = true
 
-        // Preselect first form radio button
-        form.firstElementChild.checked = true
-
-        // Update screening content
-        updateScreenCriteria(form.screen.value);
-
-        // Listen to changes to radio buttons
-        form.addEventListener("change", function () {
+            // Update screening content
             updateScreenCriteria(form.screen.value);
-        });
 
-        // Core function for updating just the second choice
-        function updateScreenCriteria(screen) {
-            // Remove old screenContainer content
-            screenContainer.classList.remove("is-visible");
-
-            setTimeout(function () {
-                while (screenContainer.firstChild) {
-                    screenContainer.removeChild(screenContainer.firstChild);
-                }
-
-                // Add new screenContainer content
-                updateScreenContent(screen);
-            }, 250);
-
-            setTimeout(function () {
-                screenContainer.classList.add("is-visible");
-            }, 500);
-        }
-
-        // Core function for updating the screening content below the selects
-        function updateScreenContent(screen) {
-            //   Go through data object
-            Array.from(data.detail).forEach((el) => {
-                //     Find the matching nested object
-                if (el.name == screen) {
-                    //       Put this information on screen
-                    const criteria = el.criteria;
-                    criteria.map((i) => {
-                        const screenSection = document.createElement("div");
-                        screenSection.classList.add("criteria")
-
-                        const question = document.createElement("p");
-                        question.textContent = i.question;
-                        question.classList.add("question");
-
-                        const examplesContainer = document.createElement("ul");
-                        examplesContainer.classList.add("examples")
-
-                        const examples = i.examples;
-                        examples.map((i) => {
-                            const exampleItem = document.createElement("li");
-                            exampleItem.textContent = i;
-                            examplesContainer.appendChild(exampleItem);
-                        });
-
-                        screenSection.appendChild(question);
-                        screenSection.appendChild(examplesContainer);
-                        screenContainer.appendChild(screenSection);
-                    });
-                }
+            // Listen to changes to radio buttons
+            form.addEventListener("change", function () {
+                updateScreenCriteria(form.screen.value);
             });
-        }
 
+            // Core function for updating just the second choice
+            function updateScreenCriteria(screen) {
+                // Remove old screenContainer content
+                screenContainer
+                    .classList
+                    .remove("is-visible");
 
-    </script>
-</body>
+                setTimeout(function () {
+                    while (screenContainer.firstChild) {
+                        screenContainer.removeChild(screenContainer.firstChild);
+                    }
+
+                    // Add new screenContainer content
+                    updateScreenContent(screen);
+                }, 250);
+
+                setTimeout(function () {
+                    screenContainer
+                        .classList
+                        .add("is-visible");
+                }, 500);
+            }
+
+            // Core function for updating the screening content below the selects
+            function updateScreenContent(screen) {
+                //   Go through data object
+                Array
+                    .from(data.detail)
+                    .forEach((el) => {
+                        //     Find the matching nested object
+                        if (el.name == screen) {
+                            //       Put this information on screen
+                            const criteria = el.criteria;
+                            criteria.map((i) => {
+                                const screenSection = document.createElement("div");
+                                screenSection
+                                    .classList
+                                    .add("criteria")
+
+                                const question = document.createElement("p");
+                                question.textContent = i.question;
+                                question
+                                    .classList
+                                    .add("question");
+
+                                const examplesContainer = document.createElement("ul");
+                                examplesContainer
+                                    .classList
+                                    .add("examples")
+
+                                const examples = i.examples;
+                                examples.map((i) => {
+                                    const exampleItem = document.createElement("li");
+                                    exampleItem.textContent = i;
+                                    examplesContainer.appendChild(exampleItem);
+                                });
+
+                                screenSection.appendChild(question);
+                                screenSection.appendChild(examplesContainer);
+                                screenContainer.appendChild(screenSection);
+                            });
+                        }
+                    });
+            }
+        </script>
+    </body>
 
 </html>

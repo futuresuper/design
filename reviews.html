@@ -1,305 +1,297 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Future Super</title>
-    <!-- <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet"> -->
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Future Super</title>
+        <!-- <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet"> -->
 
-    <style>
-        :root {
-            /* Colours */
-            --white-500: #ffffff;
-            --off-white-500: #F5F0F0;
-            --black-500: #140f14;
-            --pink-500: #DC91C8;
-            --pink-700: #C445A2;
-            --pink-900: #3C1631;
+        <style>
+            :root {
+                /* Colours */
+                --white-500: #ffffff;
+                --off-white-500: #F5F0F0;
+                --black-500: #140f14;
+                --pink-500: #DC91C8;
+                --pink-700: #C445A2;
+                --pink-900: #3C1631;
 
-            /* Spacing */
-            --margin-page-x: 2.5rem;
-            --padding-section-y: 3rem;
-        }
-
-        * {
-            transition: color 0.5s ease;
-        }
-
-
-        @font-face {
-            font-family: "SharpGroteskVF";
-            src: url("styles/fonts/SharpGroteskVariableTrial-subset-latin.woff2") format("woff2");
-            font-stretch: 92%;
-            font-weight: 500;
-            letter-spacing: -0.014em;
-            line-height: 1.2;
-        }
-
-        @font-face {
-            font-family: "SharpGroteskMedium19QuotesOnly";
-            src: url("styles/fonts/SharpGroteskMedium19-subset-quotes.woff2") format("woff2");
-            letter-spacing: -0.014em;
-            line-height: 1.2;
-        }
-
-
-        body {
-            margin: 0;
-            font-family: "SharpGroteskVF", Helvetica, Arial, sans-serif;
-            background-color: var(--white-500);
-            color: var(--black-500);
-            /* box-sizing: border-box; */
-        }
-
-        section>p {
-            font-size: 1rem;
-        }
-
-        @media (min-width: 720px) {
-            section>p {
-                font-size: 2rem;
+                /* Spacing */
+                --margin-page-x: 2.5rem;
+                --padding-section-y: 3rem;
             }
-        }
 
-        section.dummy {
-            padding: var(--padding-section-y);
-            color: grey;
-        }
+            * {
+                transition: color 0.5s ease;
+            }
 
-        /* Add fluff to first section */
-        section.dummy:nth-child(1) {
-            height: 60vh;
-            background-color: var(--off-white-500);
+            @font-face {
+                font-family: "SharpGroteskVF";
+                src: url("styles/fonts/SGVT-subset-latin.woff2") format("woff2");
+                font-stretch: 92%;
+                font-weight: 500;
+                letter-spacing: -0.014em;
+                line-height: 1.2;
+            }
 
-        }
+            @font-face {
+                font-family: "SharpGroteskMedium19QuotesOnly";
+                src: url("styles/fonts/SharpGroteskMedium19-subset-quotes.woff2") format("woff2");
+                letter-spacing: -0.014em;
+                line-height: 1.2;
+            }
 
-        /* Add fluff to last section */
-        section.dummy:nth-child(3) {
-            height: 50vh;
-            background-color: var(--black-500);
-        }
+            body {
+                margin: 0;
+                font-family: "SharpGroteskVF", Helvetica, Arial, sans-serif;
+                background-color: var(--white-500);
+                color: var(--black-500);
+                /* box-sizing: border-box; */
+            }
 
-        /* Style the real section */
-        section:nth-child(2) {
-            padding: var(--padding-section-y) 0;
-            background-color: var(--pink-900);
-            color: var(--white-500);
-        }
+            section > p {
+                font-size: 1rem;
+            }
 
-        section:nth-child(2)>p {
-            margin-left: var(--margin-page-x);
-            color: var(--pink-700);
-        }
+            @media (min-width: 720px) {
+                section > p {
+                    font-size: 2rem;
+                }
+            }
 
-        section:nth-child(2)>p a {
-            color: inherit;
-        }
+            section.dummy {
+                padding: var(--padding-section-y);
+                color: grey;
+            }
 
-        section:nth-child(2)>p a:hover {
-            color: var(--white-500);
-        }
+            /* Add fluff to first section */
+            section.dummy:nth-child(1) {
+                height: 60vh;
+                background-color: var(--off-white-500);
 
-        /* Style the review list */
-        ul {
-            list-style: none;
-            margin: 0;
-            padding: 4rem 0;
-        }
+            }
 
-        /* Reference: */
-        /* https://css-tricks.com/css-only-carousel/ */
-        ul#reviews {
-            display: flex;
-            overflow-x: auto;
-            scroll-snap-type: x mandatory;
-            scroll-behavior: smooth;
-            -webkit-overflow-scrolling: touch;
-            margin-top: 6vw;
-            margin-bottom: 4vw;
-        }
+            /* Add fluff to last section */
+            section.dummy:nth-child(3) {
+                height: 50vh;
+                background-color: var(--black-500);
+            }
 
-        ul#reviews li {
-            scroll-snap-align: start;
-            /* Stop items from shrinking */
-            flex-shrink: 0;
-            padding-left: var(--margin-page-x);
-            width: calc(100% - 6rem);
-            margin-left: -6rem;
-            margin-right: 6rem;
-        }
+            /* Style the real section */
+            section:nth-child(2) {
+                padding: var(--padding-section-y) 0;
+                background-color: var(--pink-900);
+                color: var(--white-500);
+            }
 
-        h2,
-        ul#reviews li:first-of-type {
-            margin-left: var(--margin-page-x);
-        }
+            section:nth-child(2) > p {
+                margin-left: var(--margin-page-x);
+                color: var(--pink-700);
+            }
 
-        /* ul#reviews li:first-of-type {
+            section:nth-child(2) > p a {
+                color: inherit;
+            }
+
+            section:nth-child(2) > p a:hover {
+                color: var(--white-500);
+            }
+
+            /* Style the review list */
+            ul {
+                list-style: none;
+                margin: 0;
+                padding: 4rem 0;
+            }
+
+            /* Reference: */
+            /* https://css-tricks.com/css-only-carousel/ */
+            ul#reviews {
+                display: flex;
+                overflow-x: auto;
+                scroll-snap-type: x mandatory;
+                scroll-behavior: smooth;
+                -webkit-overflow-scrolling: touch;
+                margin-top: 6vw;
+                margin-bottom: 4vw;
+            }
+
+            ul#reviews li {
+                scroll-snap-align: start;
+                /* Stop items from shrinking */
+                flex-shrink: 0;
+                padding-left: var(--margin-page-x);
+                width: calc(100% - 6rem);
+                margin-left: -6rem;
+                margin-right: 6rem;
+            }
+
+            h2,
+            ul#reviews li:first-of-type {
+                margin-left: var(--margin-page-x);
+            }
+
+            /* ul#reviews li:first-of-type {
             padding-left: 0;
         } */
 
-
-        /* Style the stars */
-        .star-container {
-            display: flex;
-            font-size: 1.5rem;
-            color: var(--pink-700);
-        }
-
-        @media (min-width: 720px) {
+            /* Style the stars */
             .star-container {
                 display: flex;
-                font-size: 4.5rem;
-            }
-        }
-
-        .star-container p {
-            margin: 0;
-        }
-
-        /* Style the reviewTitle */
-        ul#reviews li>p:first-of-type {
-            font-size: 1.5rem;
-            /* max-width: 85vw; */
-            margin-top: 0.75rem;
-            margin-bottom: 0;
-            text-indent: -0.5rem
-        }
-
-        @media (min-width: 720px) {
-            ul#reviews li>p:first-of-type {
-                font-size: 3.5rem;
-                text-indent: -1rem;
-                max-width: 65vw;
-            }
-        }
-
-        ul#reviews li>p:first-of-type::before {
-            content: open-quote;
-            color: var(--pink-700);
-            font-family: "SharpGroteskMedium19QuotesOnly";
-        }
-
-        ul#reviews li>p:first-of-type::after {
-            content: close-quote;
-            color: var(--pink-700);
-            font-family: "SharpGroteskMedium19QuotesOnly";
-        }
-
-        /* Style the reviewMeta */
-        ul#reviews li>p:nth-child(3) {
-            margin-top: 1rem;
-            margin-bottom: 0;
-            font-size: 1rem;
-            color: var(--pink-500);
-        }
-
-        @media (min-width: 720px) {
-            ul#reviews li>p:nth-child(3) {
                 font-size: 1.5rem;
+                color: var(--pink-700);
             }
-        }
 
-        ul#reviews li>p:nth-child(3) a {
-            color: inherit;
-        }
+            @media (min-width: 720px) {
+                .star-container {
+                    display: flex;
+                    font-size: 4.5rem;
+                }
+            }
 
-        ul#reviews li>p:nth-child(3) a:hover {
-            color: var(--white-500);
-        }
-    </style>
-</head>
+            .star-container p {
+                margin: 0;
+            }
 
-<body>
-    <section class="dummy">
-        <p>This is some other page content.</p>
-        <p>Scroll down for the good stuff.</p>
-    </section>
-    <section>
-        <p>Don't just take it from us.</p>
-        <ul id="reviews">
+            /* Style the reviewTitle */
+            ul#reviews li > p:first-of-type {
+                font-size: 1.5rem;
+                /* max-width: 85vw; */
+                margin-top: 0.75rem;
+                margin-bottom: 0;
+                text-indent: -0.5rem;
+            }
 
-        </ul>
-        <p>See all reviews <a href="https://www.productreview.com.au/listings/future-super?" target="_blank"
+            @media (min-width: 720px) {
+                ul#reviews li > p:first-of-type {
+                    font-size: 3.5rem;
+                    text-indent: -1rem;
+                    max-width: 65vw;
+                }
+            }
+
+            ul#reviews li > p:first-of-type::before {
+                content: open-quote;
+                color: var(--pink-700);
+                font-family: "SharpGroteskMedium19QuotesOnly";
+            }
+
+            ul#reviews li > p:first-of-type::after {
+                content: close-quote;
+                color: var(--pink-700);
+                font-family: "SharpGroteskMedium19QuotesOnly";
+            }
+
+            /* Style the reviewMeta */
+            ul#reviews li > p:nth-child(3) {
+                margin-top: 1rem;
+                margin-bottom: 0;
+                font-size: 1rem;
+                color: var(--pink-500);
+            }
+
+            @media (min-width: 720px) {
+                ul#reviews li > p:nth-child(3) {
+                    font-size: 1.5rem;
+                }
+            }
+
+            ul#reviews li > p:nth-child(3) a {
+                color: inherit;
+            }
+
+            ul#reviews li > p:nth-child(3) a:hover {
+                color: var(--white-500);
+            }
+        </style>
+    </head>
+
+    <body>
+        <section class="dummy">
+            <p>This is some other page content.</p>
+            <p>Scroll down for the good stuff.</p>
+        </section>
+        <section>
+            <p>Don't just take it from us.</p>
+            <ul id="reviews"></ul>
+            <p>See all reviews <a href="https://www.productreview.com.au/listings/future-super?" target="_blank"
                 rel="noopener noreferrer">here</a>.</p>
-    </section>
-    <section class="dummy">
-        <p>This is some other page content. Probably the Join call-out.</p>
-    </section>
-    <script>
-        // Prepare function for shortening long review titles to less than 100 characters
-        const truncate = (input) => input.length > 100 ? `${input.substring(0, 100)}...` : input;
+        </section>
+        <section class="dummy">
+            <p>This is some other page content. Probably the Join call-out.</p>
+        </section>
+        <script>
+            // Prepare function for shortening long review titles to less than 100 characters
+            const truncate = (input) => input.length > 100
+                ? `${input.substring(0, 100)}...`
+                : input;
 
-        // Import reviews
-        const selectedReviews = [
-            {
-                "starCount": 5,
-                "title": "Super easy way to help your future",
-                "author": "Jef Tan",
-                "timestamp": "3 days ago",
-                "link": "https://www.productreview.com.au/reviews/50ee2a74-b965-47d7-8be5-3d021e67a87a"
-            },
-            {
-                "starCount": 5,
-                "title": "You've found it - no where else to go!",
-                "author": "Annette",
-                "timestamp": "4 days ago",
-                "link": "https://www.productreview.com.au/reviews/b3c89bbc-284e-4f03-af25-585b5e6d5589"
-            },
-            {
-                "starCount": 5,
-                "title": "Wonderful way to put my super into enviro friendly companies and out of the coal corps",
-                "author": "beinghealthiernow",
-                "timestamp": "5 days ago",
-                "link": "https://www.productreview.com.au/reviews/1b1ddcc1-8901-455b-9170-67a61351bb21"
-            },
-            {
-                "starCount": 4,
-                "title": "Very satisfied",
-                "author": "Jeff",
-                "timestamp": "2 weeks ago",
-                "link": "https://www.productreview.com.au/reviews/cd108830-af6f-465c-b9c4-2b83bfb86453"
-            }
-        ]
+            // Import reviews
+            const selectedReviews = [
+                {
+                    "starCount": 5,
+                    "title": "Super easy way to help your future",
+                    "author": "Jef Tan",
+                    "timestamp": "3 days ago",
+                    "link": "https://www.productreview.com.au/reviews/50ee2a74-b965-47d7-8be5-3d021e67a87a"
+                }, {
+                    "starCount": 5,
+                    "title": "You've found it - no where else to go!",
+                    "author": "Annette",
+                    "timestamp": "4 days ago",
+                    "link": "https://www.productreview.com.au/reviews/b3c89bbc-284e-4f03-af25-585b5e6d5589"
+                }, {
+                    "starCount": 5,
+                    "title": "Wonderful way to put my super into enviro friendly companies and out of the coal corps",
+                    "author": "beinghealthiernow",
+                    "timestamp": "5 days ago",
+                    "link": "https://www.productreview.com.au/reviews/1b1ddcc1-8901-455b-9170-67a61351bb21"
+                }, {
+                    "starCount": 4,
+                    "title": "Very satisfied",
+                    "author": "Jeff",
+                    "timestamp": "2 weeks ago",
+                    "link": "https://www.productreview.com.au/reviews/cd108830-af6f-465c-b9c4-2b83bfb86453"
+                }
+            ]
 
-        const reviewsList = document.getElementById("reviews")
-        selectedReviews.map((review, index) => {
-            const reviewContainer = document.createElement("li");
-            reviewContainer.setAttribute("id", `review-${index + 1}`)
-            // Add stars
-            const starContainer = document.createElement("div");
-            starContainer.setAttribute("class", "star-container");
+            const reviewsList = document.getElementById("reviews")
+            selectedReviews.map((review, index) => {
+                const reviewContainer = document.createElement("li");
+                reviewContainer.setAttribute("id", `review-${index + 1}`)
+                // Add stars
+                const starContainer = document.createElement("div");
+                starContainer.setAttribute("class", "star-container");
 
-            for (let s = 0; s < review.starCount; s++) {
-                const star = document.createElement("p")
-                star.textContent = "★"
-                starContainer.appendChild(star)
-            }
-            // Add text
-            const reviewTitle = document.createElement("p");
-            const reviewMeta = document.createElement("p");
-            reviewTitle.textContent = truncate(review.title);
-            reviewMeta.innerHTML = `${review.author}, <a href=${review.link} target="_blank">${review.timestamp}</a>`;
+                for (let s = 0; s < review.starCount; s++) {
+                    const star = document.createElement("p")
+                    star.textContent = "★"
+                    starContainer.appendChild(star)
+                }
+                // Add text
+                const reviewTitle = document.createElement("p");
+                const reviewMeta = document.createElement("p");
+                reviewTitle.textContent = truncate(review.title);
+                reviewMeta.innerHTML = `${review.author}, <a href=${review.link} target="_blank">${review.timestamp}</a>`;
 
-            // Add everything
-            reviewContainer.appendChild(starContainer)
-            reviewContainer.appendChild(reviewTitle)
-            reviewContainer.appendChild(reviewMeta)
-            reviewsList.appendChild(reviewContainer)
-        })
+                // Add everything
+                reviewContainer.appendChild(starContainer)
+                reviewContainer.appendChild(reviewTitle)
+                reviewContainer.appendChild(reviewMeta)
+                reviewsList.appendChild(reviewContainer)
+            })
 
-        // Jump to next review every four seconds
-        // setTimeout(function () {
-        //     window.scrollTo(0, y-coord)
-        //     document.getElementById('review-2').scrollIntoView();
-        //     console.log("working...")
-        // }, 4000);
+            // Jump to next review every four seconds
+            // setTimeout(function () {
+            //     window.scrollTo(0, y-coord)
+            //     document.getElementById('review-2').scrollIntoView();
+            //     console.log("working...")
+            // }, 4000);
 
-        // element.scrollLeft = 10;
-        // console.log(selectedReviews.length)
-
-
-    </script>
-</body>
+            // element.scrollLeft = 10;
+            // console.log(selectedReviews.length)
+        </script>
+    </body>
 
 </html>
